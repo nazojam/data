@@ -1,0 +1,24 @@
+{
+  "name": "data",
+  "version": "0.0.1",
+  "main": "index.ts",
+  "repository": "https://github.com/kcjervis/data.git",
+  "author": "madono (https://github.com/MadonoHaru)",
+  "license": "MIT",
+  "dependencies": {
+    "lodash": "^4.17.11"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.121",
+    "@types/nedb": "^1.8.7",
+    "@types/node": "^11.9.5",
+    "@typescript-eslint/eslint-plugin": "^1.4.2",
+    "eslint": "^5.14.1",
+    "eslint-config-prettier": "^4.0.0",
+    "eslint-plugin-prettier": "^3.0.1",
+    "nedb": "^1.8.0",
+    "prettier": "^1.16.4",
+    "ts-node": "^8.0.2",
+    "typescript": "^3.3.3333"
+  }
+}
