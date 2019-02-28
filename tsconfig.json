@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
-    "target": "es5",
+    "target": "esnext",
     "lib": [
       "esnext",
       "dom"
@@ -12,8 +11,13 @@
     "esModuleInterop": true,
     "strict": true,
     "declaration": true,
+    "resolveJsonModule": true,
+    "experimentalDecorators": true,
     "outDir": "./dist",
-    "experimentalDecorators": true
+    "baseUrl": "./",
+    "paths": {
+      "*": ["dist/*"]
+    }
   },
   "exclude": [
     "node_modules",

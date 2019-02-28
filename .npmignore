@@ -1,0 +1,9 @@
+/tests
+/src
+/scripts
+.gitignore
+.gitattributes
+.prettierrc
+tsconfig.*
+tslint.*
+.vscode/

@@ -1,15 +1,18 @@
 {
-  "name": "data",
+  "name": "@jervis/data",
   "version": "0.0.1",
-  "main": "index.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "repository": "https://github.com/kcjervis/data.git",
   "author": "madono (https://github.com/MadonoHaru)",
   "license": "MIT",
-  "dependencies": {
-    "lodash": "^4.17.11"
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "update": "yarn run ts-node --files scripts",
+    "update:submodules": "git submodule foreach git pull origin master"
   },
+  "dependencies": {},
   "devDependencies": {
-    "@types/lodash": "^4.14.121",
     "@types/nedb": "^1.8.7",
     "@types/node": "^11.9.5",
     "@typescript-eslint/eslint-plugin": "^1.4.2",

@@ -3,6 +3,7 @@ module.exports = {
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended",
+    "prettier/@typescript-eslint"
   ],
   "plugins": [
     "@typescript-eslint"
@@ -12,5 +13,11 @@ module.exports = {
     "sourceType": "module",
     "project": "./tsconfig.json"
   },
-  "rules": { }
+  "rules": {
+    "no-console": "off",
+    "@typescript-eslint/camelcase": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/explicit-function-return-type": "off"
+  },
+  "env": { "browser": true }
 }
