@@ -132,4 +132,4 @@ for (const apiShip of api_mst_ship) {
   newShipsData.push(shipData)
 }
 
-fs.writeFile('./scripts/ships.json', JSON.stringify(newShipsData), console.error)
+fs.writeFile('src/json/ships.json', JSON.stringify(newShipsData), console.error)

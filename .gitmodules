@@ -1,6 +1,8 @@
 [submodule "src/api_start2"]
 	path = src/api_start2
 	url = https://github.com/Tibowl/api_start2.git
+	branch = master
 [submodule "scripts/WhoCallsTheFleet-DB"]
 	path = scripts/WhoCallsTheFleet-DB
 	url = https://github.com/TeamFleet/WhoCallsTheFleet-DB.git
+	branch = master

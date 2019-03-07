@@ -9,5 +9,5 @@ itemDatabase.loadDatabase(console.error)
 
 itemDatabase.find({ improvable: true }, (err: Error, equipments: any[]) => {
   const improvements = equipments.map(equip => equip.id)
-  fs.writeFile('improvements.json', JSON.stringify(improvements), console.error)
+  fs.writeFile('src/json/improvements.json', JSON.stringify(improvements), console.error)
 })

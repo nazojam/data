@@ -1,4 +1,4 @@
-import ships from './ships.json'
+import ships from './json/ships.json'
 
 export type ShipStat = number | [number, number]
 export interface ShipData {
