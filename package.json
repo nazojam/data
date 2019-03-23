@@ -1,6 +1,7 @@
 {
   "name": "@jervis/data",
-  "version": "0.0.1",
+  "sideEffects": false,
+  "version": "0.0.2",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "repository": "https://github.com/kcjervis/data.git",
@@ -10,18 +11,37 @@
     "build": "yarn update && tsc -p tsconfig.json",
     "update": "yarn update:submodule && yarn update:data",
     "update:data": "yarn run ts-node --files scripts",
-    "update:submodule": "git submodule update --remote"
+    "update:submodule": "git submodule update --remote",
+    "test": "jest"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "transform": {
+      "^.+\\.(ts|tsx)$": "ts-jest"
+    },
+    "globals": {
+      "ts-jest": {
+        "tsConfigFile": "tsconfig.json"
+      }
+    }
   },
   "dependencies": {},
   "devDependencies": {
+    "@types/jest": "^24.0.11",
     "@types/nedb": "^1.8.7",
     "@types/node": "^11.10.5",
     "@typescript-eslint/eslint-plugin": "^1.4.2",
     "eslint": "^5.15.1",
     "eslint-config-prettier": "^4.1.0",
     "eslint-plugin-prettier": "^3.0.1",
+    "jest": "^24.5.0",
     "nedb": "^1.8.0",
     "prettier": "^1.16.4",
+    "ts-jest": "^24.0.0",
     "ts-node": "^8.0.3",
     "typescript": "^3.3.3333"
   }

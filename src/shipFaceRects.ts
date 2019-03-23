@@ -1,6 +1,7 @@
 import shipFaceRects from './json/shipFaceRects.json'
 
-type Rect = [number, number, number, number]
+/** [left, top, width, height] */
+export type Rect = [number, number, number, number]
 
 interface ShipFaceRect {
   /** 艦船ID */
