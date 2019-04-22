@@ -8,7 +8,7 @@
   "author": "madono (https://github.com/MadonoHaru)",
   "license": "MIT",
   "scripts": {
-    "build": "yarn update && tsc -p tsconfig.json",
+    "build": "tsc -p tsconfig.json",
     "update": "yarn update:submodule && yarn update:data",
     "update:data": "yarn run ts-node --files scripts",
     "update:submodule": "git submodule update --remote",
