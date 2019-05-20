@@ -9,6 +9,7 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc -p tsconfig.json",
+    "build:commonjs": "tsc -p tsconfig.commonjs.json",
     "update": "yarn update:submodule && yarn update:data",
     "update:data": "yarn run ts-node --files scripts",
     "update:submodule": "git submodule update --remote",
