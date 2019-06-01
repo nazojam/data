@@ -22778,9 +22778,9 @@
       0,
       0
     ],
-    "evasion": -1,
-    "asw": -1,
-    "los": -1,
+    "evasion": [57 , 91],
+    "asw": [34 , 75],
+    "los": [6 , 29],
     "antiAir": [
       11,
       54
@@ -33995,7 +33995,7 @@
   {
     "id": 562,
     "sortNo": 362,
-    "sortId": 32511,
+    "sortId": 32551,
     "name": "Johnston",
     "readingName": "ジョンストン",
     "shipTypeId": 2,
@@ -35211,9 +35211,9 @@
       0,
       0
     ],
-    "evasion": -1,
-    "asw": -1,
-    "los": -1,
+    "evasion": [	42 , 83],
+    "asw": 	[31 , 72],
+    "los": [3 , 13],
     "antiAir": [
       7,
       24
@@ -35260,9 +35260,18 @@
       0,
       0
     ],
-    "evasion": -1,
-    "asw": -1,
-    "los": -1,
+    "evasion": [
+      41,
+      82
+    ],
+    "asw": [
+      32,
+      75
+    ],
+    "los": [
+      4,
+      15
+    ],
     "antiAir": [
       6,
       22
@@ -35403,9 +35412,18 @@
       20,
       66
     ],
-    "evasion": -1,
-    "asw": -1,
-    "los": -1,
+    "evasion": [
+      34,
+      65
+    ],
+    "asw": [
+      20,
+      40
+    ],
+    "los": [
+      12,
+      40
+    ],
     "antiAir": [
       20,
       60
@@ -35541,9 +35559,15 @@
       0,
       0
     ],
-    "evasion": -1,
-    "asw": -1,
-    "los": -1,
+    "evasion": [
+      33,
+      73
+    ],
+    "asw": 0,
+    "los": [
+      51,
+      91
+    ],
     "antiAir": [
       40,
       85
@@ -35570,6 +35594,55 @@
     }
   },
   {
+    "id": 596,
+    "sortNo": 396,
+    "sortId": 32511,
+    "name": "Fletcher",
+    "readingName": "フレッチャー",
+    "shipTypeId": 2,
+    "classId": 91,
+    "hp": [
+      18,
+      38
+    ],
+    "firepower": [
+      12,
+      31
+    ],
+    "armor": [
+      7,
+      20
+    ],
+    "torpedo": [
+      20,
+      60
+    ],
+    "evasion": -1,
+    "asw": -1,
+    "los": -1,
+    "antiAir": [
+      32,
+      62
+    ],
+    "speed": 10,
+    "range": 1,
+    "luck": [
+      30,
+      89
+    ],
+    "fuel": 20,
+    "ammo": 20,
+    "slotCapacities": [
+      0,
+      0
+    ],
+    "equipments": [],
+    "remodel": {
+      "nextId": 692,
+      "nextLevel": 55
+    }
+  },
+  {
     "id": 599,
     "sortNo": 409,
     "sortId": 2017,
@@ -35593,9 +35666,15 @@
       0,
       0
     ],
-    "evasion": -1,
-    "asw": -1,
-    "los": -1,
+    "evasion": [
+      33,
+      75
+    ],
+    "asw": 0,
+    "los": [
+      50,
+      90
+    ],
     "antiAir": [
       40,
       84
@@ -35619,6 +35698,57 @@
     "remodel": {
       "nextId": 594,
       "nextLevel": 92
+    }
+  },
+  {
+    "id": 601,
+    "sortNo": 401,
+    "sortId": 32021,
+    "name": "Colorado",
+    "readingName": "コロラド",
+    "shipTypeId": 9,
+    "classId": 93,
+    "hp": [
+      77,
+      89
+    ],
+    "firepower": [
+      78,
+      96
+    ],
+    "armor": [
+      73,
+      90
+    ],
+    "torpedo": [
+      0,
+      0
+    ],
+    "evasion": [19,43],
+    "asw": 0,
+    "los": [9,37],
+    "antiAir": [
+      28,
+      90
+    ],
+    "speed": 5,
+    "range": 3,
+    "luck": [
+      30,
+      99
+    ],
+    "fuel": 90,
+    "ammo": 130,
+    "slotCapacities": [
+      0,
+      1,
+      1,
+      1
+    ],
+    "equipments": [],
+    "remodel": {
+      "nextId": 1496,
+      "nextLevel": 45
     }
   },
   {
@@ -36242,7 +36372,7 @@
   {
     "id": 689,
     "sortNo": 1489,
-    "sortId": 32512,
+    "sortId": 32552,
     "name": "Johnston改",
     "readingName": "ジョンストン",
     "shipTypeId": 2,
@@ -36414,9 +36544,18 @@
       22,
       70
     ],
-    "evasion": -1,
-    "asw": -1,
-    "los": -1,
+    "evasion": [
+      38,
+      78
+    ],
+    "asw": [
+      25,
+      60
+    ],
+    "los": [
+      13,
+      48
+    ],
     "antiAir": [
       24,
       70
@@ -36433,6 +36572,107 @@
       2,
       2,
       2,
+      2
+    ],
+    "equipments": [],
+    "remodel": {
+      "nextId": 0,
+      "nextLevel": 0
+    }
+  },
+  {
+    "id": 692,
+    "sortNo": 1492,
+    "sortId": 32512,
+    "name": "Fletcher改",
+    "readingName": "フレッチャー",
+    "shipTypeId": 2,
+    "classId": 91,
+    "hp": [
+      35,
+      52
+    ],
+    "firepower": [
+      15,
+      54
+    ],
+    "armor": [
+      16,
+      52
+    ],
+    "torpedo": [
+      26,
+      72
+    ],
+    "evasion": -1,
+    "asw": -1,
+    "los": -1,
+    "antiAir": [
+      40,
+      91
+    ],
+    "speed": 10,
+    "range": 1,
+    "luck": [
+      40,
+      100
+    ],
+    "fuel": 20,
+    "ammo": 20,
+    "slotCapacities": [
+      0,
+      0,
+      0
+    ],
+    "equipments": [],
+    "remodel": {
+      "nextId": 0,
+      "nextLevel": 0
+    }
+  },
+  {
+    "id": 1496,
+    "sortNo": 406,
+    "sortId": 32022,
+    "name": "Colorado改",
+    "readingName": "コロラド",
+    "shipTypeId": 9,
+    "classId": 93,
+    "hp": [
+      91,
+      98
+    ],
+    "firepower": [
+      80,
+      105
+    ],
+    "armor": [
+      83,
+      99
+    ],
+    "torpedo": [
+      0,
+      0
+    ],
+    "evasion": -1,
+    "asw": -1,
+    "los": -1,
+    "antiAir": [
+      36,
+      100
+    ],
+    "speed": 5,
+    "range": 3,
+    "luck": [
+      40,
+      110
+    ],
+    "fuel": 95,
+    "ammo": 165,
+    "slotCapacities": [
+      1,
+      1,
+      1,
       2
     ],
     "equipments": [],
@@ -41842,7 +42082,7 @@
     "readingName": "",
     "shipTypeId": 9,
     "classId": 1,
-    "hp": 550,
+    "hp": 600,
     "firepower": 150,
     "armor": 210,
     "torpedo": 120,
@@ -41873,7 +42113,7 @@
     "readingName": "",
     "shipTypeId": 9,
     "classId": 1,
-    "hp": 750,
+    "hp": 800,
     "firepower": 180,
     "armor": 240,
     "torpedo": 140,
@@ -41904,7 +42144,7 @@
     "readingName": "",
     "shipTypeId": 9,
     "classId": 1,
-    "hp": 850,
+    "hp": 900,
     "firepower": 230,
     "armor": 270,
     "torpedo": 160,
@@ -47298,7 +47538,12 @@
       3,
       3
     ],
-    "equipments": [550, 550, 545, 525],
+    "equipments": [
+      550,
+      550,
+      545,
+      525
+    ],
     "remodel": {
       "nextId": 0,
       "nextLevel": 0
@@ -47331,7 +47576,12 @@
       0,
       4
     ],
-    "equipments": [563,563, 515, 564],
+    "equipments": [
+      563,
+      563,
+      515,
+      564
+    ],
     "remodel": {
       "nextId": 0,
       "nextLevel": 0
@@ -47364,7 +47614,12 @@
       0,
       4
     ],
-    "equipments": [563,563, 515, 564],
+    "equipments": [
+      563,
+      563,
+      515,
+      564
+    ],
     "remodel": {
       "nextId": 0,
       "nextLevel": 0
@@ -47378,26 +47633,31 @@
     "readingName": "",
     "shipTypeId": 10,
     "classId": 1,
-    "hp": -2,
-    "firepower": -2,
-    "armor": -2,
-    "torpedo": -2,
-    "evasion": -1,
-    "asw": -1,
-    "los": -1,
-    "antiAir": -2,
+    "hp": 790,
+    "firepower": 170,
+    "armor": 200,
+    "torpedo": 110,
+    "evasion": -2,
+    "asw": 0,
+    "los": -2,
+    "antiAir": 88,
     "speed": 0,
-    "range": -2,
+    "range": 2,
     "luck": -2,
     "fuel": 0,
     "ammo": 0,
     "slotCapacities": [
-      -1,
-      -1,
-      -1,
-      -1
+      0,
+      0,
+      0,
+      50
     ],
-    "equipments": [],
+    "equipments": [
+      589,
+      565,
+      580,
+      562
+    ],
     "remodel": {
       "nextId": 0,
       "nextLevel": 0
@@ -47411,26 +47671,31 @@
     "readingName": "",
     "shipTypeId": 10,
     "classId": 1,
-    "hp": -2,
-    "firepower": -2,
-    "armor": -2,
-    "torpedo": -2,
-    "evasion": -1,
-    "asw": -1,
-    "los": -1,
-    "antiAir": -2,
+    "hp": 790,
+    "firepower": 180,
+    "armor": 230,
+    "torpedo": 120,
+    "evasion": -2,
+    "asw": 0,
+    "los": -2,
+    "antiAir": 88,
     "speed": 0,
-    "range": -2,
+    "range": 2,
     "luck": -2,
     "fuel": 0,
     "ammo": 0,
     "slotCapacities": [
-      -1,
-      -1,
-      -1,
-      -1
+      0,
+      0,
+      0,
+      70
     ],
-    "equipments": [],
+    "equipments": [
+      589,
+      565,
+      580,
+      562
+    ],
     "remodel": {
       "nextId": 0,
       "nextLevel": 0
@@ -47448,9 +47713,9 @@
     "firepower": 190,
     "armor": 250,
     "torpedo": 150,
-    "evasion": -1,
-    "asw": 	0,
-    "los": -1,
+    "evasion": -2,
+    "asw": 0,
+    "los": -2,
     "antiAir": 96,
     "speed": 0,
     "range": 2,
@@ -47463,7 +47728,12 @@
       0,
       90
     ],
-    "equipments": [589, 565, 580, 562],
+    "equipments": [
+      589,
+      565,
+      580,
+      562
+    ],
     "remodel": {
       "nextId": 0,
       "nextLevel": 0
@@ -47477,26 +47747,31 @@
     "readingName": "",
     "shipTypeId": 10,
     "classId": 1,
-    "hp": -2,
-    "firepower": -2,
-    "armor": -2,
-    "torpedo": -2,
-    "evasion": -1,
-    "asw": -1,
-    "los": -1,
-    "antiAir": -2,
+    "hp": 790,
+    "firepower": 170,
+    "armor": 240,
+    "torpedo": 130,
+    "evasion": -2,
+    "asw": 0,
+    "los": -2,
+    "antiAir": 94,
     "speed": 0,
-    "range": -2,
+    "range": 4,
     "luck": -2,
     "fuel": 0,
     "ammo": 0,
     "slotCapacities": [
-      -1,
-      -1,
-      -1,
-      -1
+      0,
+      0,
+      0,
+      80
     ],
-    "equipments": [],
+    "equipments": [
+      589,
+      591,
+      590,
+      562
+    ],
     "remodel": {
       "nextId": 0,
       "nextLevel": 0
@@ -47510,26 +47785,31 @@
     "readingName": "",
     "shipTypeId": 10,
     "classId": 1,
-    "hp": -2,
-    "firepower": -2,
-    "armor": -2,
-    "torpedo": -2,
-    "evasion": -1,
-    "asw": -1,
-    "los": -1,
-    "antiAir": -2,
+    "hp": 790,
+    "firepower": 180,
+    "armor": 260,
+    "torpedo": 150,
+    "evasion": -2,
+    "asw": 0,
+    "los": -2,
+    "antiAir": 94,
     "speed": 0,
-    "range": -2,
+    "range": 4,
     "luck": -2,
     "fuel": 0,
     "ammo": 0,
     "slotCapacities": [
-      -1,
-      -1,
-      -1,
-      -1
+      0,
+      0,
+      0,
+      100
     ],
-    "equipments": [],
+    "equipments": [
+      589,
+      591,
+      590,
+      562
+    ],
     "remodel": {
       "nextId": 0,
       "nextLevel": 0
@@ -47547,9 +47827,9 @@
     "firepower": 190,
     "armor": 290,
     "torpedo": 180,
-    "evasion": -1,
-    "asw": -1,
-    "los": -1,
+    "evasion": -2,
+    "asw": 0,
+    "los": -2,
     "antiAir": 104,
     "speed": 0,
     "range": 4,
@@ -47562,7 +47842,240 @@
       0,
       120
     ],
-    "equipments": [589, 591, 590, 562],
+    "equipments": [
+      589,
+      591,
+      590,
+      562
+    ],
+    "remodel": {
+      "nextId": 0,
+      "nextLevel": 0
+    }
+  },
+  {
+    "id": 1871,
+    "sortNo": 0,
+    "sortId": 0,
+    "name": "太平洋深海棲姫",
+    "readingName": "",
+    "shipTypeId": 9,
+    "classId": 1,
+    "hp": 900,
+    "firepower": 320,
+    "armor": 212,
+    "torpedo": 90,
+    "evasion": -2,
+    "asw": 0,
+    "los": -2,
+    "antiAir": 102,
+    "speed": 5,
+    "range": 3,
+    "luck": -2,
+    "fuel": 0,
+    "ammo": 0,
+    "slotCapacities": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "equipments": [
+      592,
+      592,
+      592,
+      593
+    ],
+    "remodel": {
+      "nextId": 0,
+      "nextLevel": 0
+    }
+  },
+  {
+    "id": 1872,
+    "sortNo": 0,
+    "sortId": 0,
+    "name": "太平洋深海棲姫",
+    "readingName": "",
+    "shipTypeId": 9,
+    "classId": 1,
+    "hp": 930,
+    "firepower": 330,
+    "armor": 232,
+    "torpedo": 110,
+    "evasion": -2,
+    "asw": 0,
+    "los": -2,
+    "antiAir": 122,
+    "speed": 5,
+    "range": 3,
+    "luck": -2,
+    "fuel": 0,
+    "ammo": 0,
+    "slotCapacities": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "equipments": [
+      592,
+      592,
+      592,
+      593
+    ],
+    "remodel": {
+      "nextId": 0,
+      "nextLevel": 0
+    }
+  },
+  {
+    "id": 1873,
+    "sortNo": 0,
+    "sortId": 0,
+    "name": "太平洋深海棲姫",
+    "readingName": "",
+    "shipTypeId": 9,
+    "classId": 1,
+    "hp": 960,
+    "firepower": 350,
+    "armor": 252,
+    "torpedo": 120,
+    "evasion": -2,
+    "asw": 0,
+    "los": -2,
+    "antiAir": 142,
+    "speed": 5,
+    "range": 3,
+    "luck": -2,
+    "fuel": 0,
+    "ammo": 0,
+    "slotCapacities": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "equipments": [
+      592,
+      592,
+      592,
+      593
+    ],
+    "remodel": {
+      "nextId": 0,
+      "nextLevel": 0
+    }
+  },
+  {
+    "id": 1874,
+    "sortNo": 0,
+    "sortId": 0,
+    "name": "太平洋深海棲姫-壊",
+    "readingName": "",
+    "shipTypeId": 9,
+    "classId": 1,
+    "hp": 900,
+    "firepower": 340,
+    "armor": 242,
+    "torpedo": 110,
+    "evasion": -2,
+    "asw": 0,
+    "los": -2,
+    "antiAir": 112,
+    "speed": 5,
+    "range": 3,
+    "luck": -2,
+    "fuel": 0,
+    "ammo": 0,
+    "slotCapacities": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "equipments": [
+      592,
+      592,
+      592,
+      593
+    ],
+    "remodel": {
+      "nextId": 0,
+      "nextLevel": 0
+    }
+  },
+  {
+    "id": 1875,
+    "sortNo": 0,
+    "sortId": 0,
+    "name": "太平洋深海棲姫-壊",
+    "readingName": "",
+    "shipTypeId": 9,
+    "classId": 1,
+    "hp": 930,
+    "firepower": 360,
+    "armor": 262,
+    "torpedo": 130,
+    "evasion": -2,
+    "asw": 	0,
+    "los": -2,
+    "antiAir": 132,
+    "speed": 5,
+    "range": 3,
+    "luck": -2,
+    "fuel": 0,
+    "ammo": 0,
+    "slotCapacities": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "equipments": [
+      592,
+      592,
+      592,
+      593
+    ],
+    "remodel": {
+      "nextId": 0,
+      "nextLevel": 0
+    }
+  },
+  {
+    "id": 1876,
+    "sortNo": 0,
+    "sortId": 0,
+    "name": "太平洋深海棲姫-壊",
+    "readingName": "",
+    "shipTypeId": 9,
+    "classId": 1,
+    "hp": 960,
+    "firepower": 380,
+    "armor": 292,
+    "torpedo": 150,
+    "evasion": -2,
+    "asw": 0,
+    "los": -2,
+    "antiAir": 152,
+    "speed": 5,
+    "range": 3,
+    "luck": -2,
+    "fuel": 0,
+    "ammo": 0,
+    "slotCapacities": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "equipments": [
+      592,
+      592,
+      592,
+      593
+    ],
     "remodel": {
       "nextId": 0,
       "nextLevel": 0
