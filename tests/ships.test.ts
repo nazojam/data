@@ -1,4 +1,4 @@
-import { ships } from '../src'
+import { ships, ShipStat } from '../src'
 import Datastore from 'nedb'
 
 const shipDatabase = new Datastore({
@@ -15,24 +15,29 @@ const findShip = async (id: number) =>
     })
   )
 
+const statToArray = (stat: ShipStat) => {
+  if (typeof stat === 'number') {
+    return [stat, stat] as const
+  }
+  return stat
+}
+
 for (const masterShip of ships) {
   it(masterShip.name, async () => {
-    const ship = await findShip(masterShip.id)
-    if (!ship || !ship.stat || ship.stat.asw === -1) {
+    const dbShip = await findShip(masterShip.id)
+    if (!dbShip || !dbShip.stat || dbShip.stat.asw === -1) {
       return
     }
-    const { asw, los, evasion } = masterShip
-    if (typeof asw !== 'number') {
-      expect(ship.stat.asw).toBe(asw[0])
-      expect(ship.stat.asw_max).toBe(asw[1])
-    }
-    if (typeof los !== 'number') {
-      expect(ship.stat.los).toBe(los[0])
-      expect(ship.stat.los_max).toBe(los[1])
-    }
-    if (typeof evasion !== 'number') {
-      expect(ship.stat.evasion).toBe(evasion[0])
-      expect(ship.stat.evasion_max).toBe(evasion[1])
-    }
+    const asw = statToArray(masterShip.asw)
+    const los = statToArray(masterShip.los)
+    const evasion = statToArray(masterShip.evasion)
+    expect(dbShip.stat).toMatchObject({
+      asw: asw[0],
+      asw_max: asw[1],
+      los: los[0],
+      los_max: los[1],
+      evasion: evasion[0],
+      evasion_max: evasion[1]
+    })
   })
 }
