@@ -8,6 +8,6 @@ const itemDatabase = new Datastore({
 itemDatabase.loadDatabase(console.error)
 
 itemDatabase.find({ improvable: true }, (err: Error, equipments: any[]) => {
-  const improvements = equipments.map(equip => equip.id)
-  fs.writeFile('src/json/improvements.json', JSON.stringify(improvements), console.error)
+  const improvableIds = equipments.map(equip => equip.id)
+  fs.writeFile('src/json/improvableIds.json', JSON.stringify(improvableIds), console.error)
 })
