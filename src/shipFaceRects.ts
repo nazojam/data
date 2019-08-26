@@ -1,4 +1,4 @@
-import shipFaceRects from './json/shipFaceRects.json'
+import shipFaceRects from "./json/shipFaceRects.json"
 
 /** [left, top, width, height] */
 export type Rect = [number, number, number, number]

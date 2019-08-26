@@ -1,4 +1,4 @@
-import fs from 'fs'
+import fs from "fs"
 import {
   api_mst_equip_exslot_ship,
   api_mst_equip_ship,
@@ -7,13 +7,13 @@ import {
   MstAllyShip,
   MstShip,
   ships
-} from '../src'
+} from "../src"
 
-const isMstAllyShip = (mstShip: MstShip): mstShip is MstAllyShip => 'api_houg' in mstShip
+const isMstAllyShip = (mstShip: MstShip): mstShip is MstAllyShip => "api_houg" in mstShip
 
 const getSlotCapacities = (mstShip: MstShip, shipData?: ShipData) => {
   const { api_slot_num } = mstShip
-  if ('api_maxeq' in mstShip) {
+  if ("api_maxeq" in mstShip) {
     const { api_maxeq } = mstShip
     return Array.from({ length: api_slot_num }, (_, i) => api_maxeq[i])
   }
@@ -24,7 +24,7 @@ const getSlotCapacities = (mstShip: MstShip, shipData?: ShipData) => {
 }
 
 const getRemodel = (mstShip: MstShip) => {
-  if ('api_afterlv' in mstShip) {
+  if ("api_afterlv" in mstShip) {
     const { api_aftershipid, api_afterlv } = mstShip
     return {
       nextId: Number(api_aftershipid),
@@ -132,4 +132,4 @@ for (const apiShip of api_mst_ship) {
   newShipsData.push(shipData)
 }
 
-fs.writeFile('src/json/ships.json', JSON.stringify(newShipsData), console.error)
+fs.writeFile("src/json/ships.json", JSON.stringify(newShipsData), console.error)

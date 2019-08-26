@@ -1,4 +1,4 @@
-import api_mst_slotitem_equiptype from './api_start2/parsed/api_mst_slotitem_equiptype.json'
+import api_mst_slotitem_equiptype from "./api_start2/parsed/api_mst_slotitem_equiptype.json"
 
 interface MstEquipmentCategory {
   api_id: number

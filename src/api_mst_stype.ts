@@ -1,4 +1,4 @@
-import api_mst_stype from './api_start2/parsed/api_mst_stype.json'
+import api_mst_stype from "./api_start2/parsed/api_mst_stype.json"
 
 interface MstShipType {
   api_id: number

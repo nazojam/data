@@ -1,9 +1,9 @@
-import { ships } from '../src'
-import Datastore from 'nedb'
-import fs from 'fs'
+import { ships } from "../src"
+import Datastore from "nedb"
+import fs from "fs"
 
 const shipDatabase = new Datastore({
-  filename: 'scripts/WhoCallsTheFleet-DB/db/ships.nedb'
+  filename: "scripts/WhoCallsTheFleet-DB/db/ships.nedb"
 })
 
 shipDatabase.loadDatabase(console.error)
@@ -28,7 +28,7 @@ const mergeData = async () => {
     masterShip.evasion = dbStat.evasion === dbStat.evasion_max ? dbStat.evasion : [dbStat.evasion, dbStat.evasion_max]
   }
 
-  fs.writeFile('src/json/ships.json', JSON.stringify(ships), console.error)
+  fs.writeFile("src/json/ships.json", JSON.stringify(ships), console.error)
 }
 
 mergeData()

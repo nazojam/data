@@ -1,4 +1,4 @@
-import api_mst_ship from './api_start2/parsed/api_mst_ship.json'
+import api_mst_ship from "./api_start2/parsed/api_mst_ship.json"
 
 type MstStat = [number, number]
 

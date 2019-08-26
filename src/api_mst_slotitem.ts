@@ -1,4 +1,4 @@
-import api_mst_slotitem from './api_start2/parsed/api_mst_slotitem.json'
+import api_mst_slotitem from "./api_start2/parsed/api_mst_slotitem.json"
 
 export interface MstEquipment {
   api_id: number

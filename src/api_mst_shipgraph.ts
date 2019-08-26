@@ -1,4 +1,4 @@
-import api_mst_shipgraph from './api_start2/parsed/api_mst_shipgraph.json'
+import api_mst_shipgraph from "./api_start2/parsed/api_mst_shipgraph.json"
 
 type Point = [number, number]
 
