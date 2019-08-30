@@ -15,7 +15,8 @@
     "update:data": "yarn run ts-node --files scripts",
     "update:submodule": "git submodule update --remote",
     "test": "jest",
-    "tsnode": "yarn run ts-node --files"
+    "tsnode": "yarn run ts-node --files",
+    "runmain": "yarn tsnode scripts/main.ts"
   },
   "jest": {
     "preset": "ts-jest"
@@ -23,6 +24,7 @@
   "dependencies": {},
   "devDependencies": {
     "@types/jest": "^24.0.18",
+    "@types/lodash": "^4.14.137",
     "@types/nedb": "^1.8.8",
     "@types/node": "^12.7.2",
     "@typescript-eslint/eslint-plugin": "^2.0.0",
@@ -31,6 +33,7 @@
     "eslint-config-prettier": "^6.1.0",
     "eslint-plugin-prettier": "^3.1.0",
     "jest": "^24.9.0",
+    "lodash": "^4.17.15",
     "nedb": "^1.8.0",
     "prettier": "^1.18.2",
     "ts-jest": "^24.0.2",
