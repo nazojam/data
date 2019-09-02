@@ -40,27 +40,3 @@ const maps = rawmaps.map(data => ({
   mapId: data.mapId,
   nodes: data.nodes.map(formatNode)
 }))
-
-for (const [id, enemy] of shipMap) {
-  const signale = Signale.scope(id.toString())
-  const data = ships.find(data => data.id === id)
-  if (!data) {
-    signale.fatal(`${id} is not found`)
-    continue
-  }
-
-  if (data.hp !== enemy.hp && enemy.hp !== undefined) {
-    signale.fatal(`hp is not matched ${data.hp} !== ${enemy.hp}`)
-  }
-  if (data.firepower !== enemy.fp && enemy.fp !== undefined) {
-    signale.fatal(`firepower is not matched ${data.firepower} !== ${enemy.fp}`)
-  }
-  if (data.armor !== enemy.armor && enemy.armor !== undefined) {
-    signale.fatal(`armor is not matched ${data.armor} !== ${enemy.armor}`)
-  }
-  if (data.torpedo !== enemy.torp && enemy.torp !== undefined) {
-    signale.fatal(`torpedo is not matched ${data.torpedo} !== ${enemy.torp}`)
-  }
-}
-
-fs.writeFile("src/json/ships.json", JSON.stringify(ships), console.error)
