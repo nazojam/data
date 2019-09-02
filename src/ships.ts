@@ -23,7 +23,7 @@ export interface ShipData {
   fuel: number
   ammo: number
   slotCapacities: Readonly<number[]>
-  equipments: Readonly<(number | { id: number; improvement: number })[]>
+  equipments: (number | { id: number; improvement: number })[]
   remodel?: Readonly<{
     nextId: number
     nextLevel: number

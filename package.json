@@ -9,14 +9,14 @@
   "author": "madono (https://github.com/MadonoHaru)",
   "license": "MIT",
   "scripts": {
-    "build": "tsc -p tsconfig.json && yarn build:commonjs",
+    "build": "tsc -p tsconfig.build.json && yarn build:commonjs",
     "build:commonjs": "tsc -p tsconfig.commonjs.json",
     "update": "yarn update:submodule && yarn update:data",
-    "update:data": "yarn run ts-node --files scripts",
-    "update:submodule": "git submodule update --remote",
     "test": "jest",
-    "tsnode": "yarn run ts-node --files",
-    "runmain": "yarn tsnode scripts/main.ts"
+    "tsnode": "yarn run ts-node --project tsconfig.node.json --files",
+    "runmain": "yarn tsnode scripts/main.ts",
+    "update:data": "yarn tsnode scripts",
+    "update:submodule": "git submodule update --remote"
   },
   "jest": {
     "preset": "ts-jest"
@@ -24,20 +24,23 @@
   "dependencies": {},
   "devDependencies": {
     "@types/jest": "^24.0.18",
-    "@types/lodash": "^4.14.137",
+    "@types/lodash": "^4.14.138",
     "@types/nedb": "^1.8.8",
-    "@types/node": "^12.7.2",
+    "@types/node": "^12.7.3",
+    "@types/signale": "^1.2.1",
     "@typescript-eslint/eslint-plugin": "^2.0.0",
     "@typescript-eslint/parser": "^2.0.0",
-    "eslint": "^6.2.0",
+    "axios": "^0.19.0",
+    "eslint": "^6.3.0",
     "eslint-config-prettier": "^6.1.0",
     "eslint-plugin-prettier": "^3.1.0",
     "jest": "^24.9.0",
     "lodash": "^4.17.15",
     "nedb": "^1.8.0",
     "prettier": "^1.18.2",
+    "signale": "^1.4.0",
     "ts-jest": "^24.0.2",
     "ts-node": "^8.3.0",
-    "typescript": "^3.5.3"
+    "typescript": "^3.6.2"
   }
 }
