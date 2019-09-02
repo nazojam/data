@@ -42,22 +42,25 @@ const maps = rawmaps.map(data => ({
 }))
 
 for (const [id, enemy] of shipMap) {
-  let signale = Signale.scope(id.toString())
+  const signale = Signale.scope(id.toString())
   const data = ships.find(data => data.id === id)
   if (!data) {
     signale.fatal(`${id} is not found`)
     continue
   }
-  signale = Signale.scope(`${id} ${data.name}`)
 
-  enemy.equips
-    .filter(num => num > 0)
-    .forEach((eq, index) => {
-      if (eq !== data.equipments[index]) {
-        data.equipments[index] = eq
-        signale.fatal(`equips is not matched ${eq} !== ${data.equipments[index]}`)
-      }
-    })
+  if (data.hp !== enemy.hp && enemy.hp !== undefined) {
+    signale.fatal(`hp is not matched ${data.hp} !== ${enemy.hp}`)
+  }
+  if (data.firepower !== enemy.fp && enemy.fp !== undefined) {
+    signale.fatal(`firepower is not matched ${data.firepower} !== ${enemy.fp}`)
+  }
+  if (data.armor !== enemy.armor && enemy.armor !== undefined) {
+    signale.fatal(`armor is not matched ${data.armor} !== ${enemy.armor}`)
+  }
+  if (data.torpedo !== enemy.torp && enemy.torp !== undefined) {
+    signale.fatal(`torpedo is not matched ${data.torpedo} !== ${enemy.torp}`)
+  }
 }
 
 fs.writeFile("src/json/ships.json", JSON.stringify(ships), console.error)
