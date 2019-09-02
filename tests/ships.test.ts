@@ -1,8 +1,8 @@
-import { ships, ShipStat } from '../src'
-import Datastore from 'nedb'
+import { ships, ShipStat } from "../src"
+import Datastore from "nedb"
 
 const shipDatabase = new Datastore({
-  filename: 'scripts/WhoCallsTheFleet-DB/db/ships.nedb'
+  filename: "scripts/WhoCallsTheFleet-DB/db/ships.nedb"
 })
 
 shipDatabase.loadDatabase(console.error)
@@ -16,7 +16,7 @@ const findShip = async (id: number) =>
   )
 
 const statToArray = (stat: ShipStat) => {
-  if (typeof stat === 'number') {
+  if (typeof stat === "number") {
     return [stat, stat] as const
   }
   return stat
