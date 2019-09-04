@@ -22,4 +22,4 @@ export type Map = {
   nodes: MapNode[]
 }
 
-export default maps
+export default maps as Map[]

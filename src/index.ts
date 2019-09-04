@@ -11,7 +11,7 @@ export { default as ships, ShipData, ShipStat } from "./ships"
 export { default as improvableIds } from "./improvableIds"
 export { default as shipFaceRects, Rect } from "./shipFaceRects"
 
-export { MapEnemyShip, MapEnemyFleet } from "./formattedMaps"
+export { default as formattedMaps, MapEnemyShip, MapEnemyFleet } from "./formattedMaps"
 
 export * from "./GearId"
 export * from "./ShipId"
