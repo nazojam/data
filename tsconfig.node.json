@@ -1,23 +1,5 @@
 {
-  "compilerOptions": {
-    "target": "es2015",
-    "lib": [
-      "esnext",
-      "dom"
-    ],
-    "moduleResolution": "node",
-    "noImplicitReturns": true,
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "strict": true,
-    "declaration": true,
-    "resolveJsonModule": true,
-    "experimentalDecorators": true
-  },
-  "exclude": [
-    "node_modules",
-    "dist",
-  ],
+  "extends": "./tsconfig.json",
   "include": [
     "scripts/**/*"
   ]

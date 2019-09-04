@@ -78,7 +78,6 @@ export type PiroEnemycomps = { entryCount?: number; entries: PiroEnemy[] }
 
 const getNodeEnemies = async (map: string, edges: string[], diff?: number): Promise<PiroEnemy[]> => {
   const params = await createParams(map, edges, diff)
-  await sleep(1000)
   const res: { data: PiroEnemycomps } = await axios.get("/enemycomps", { params })
   return res.data.entries.map(enemy => ({ ...enemy, diff }))
 }
@@ -89,7 +88,10 @@ const getEventNodeEnemies = async (map: string, edges: string[]): Promise<PiroEn
 }
 
 class MapObject {
-  constructor(public key: string) {}
+  public cash?: MapData
+  constructor(public key: string) {
+    this.cash = rawmaps.find(map => map.mapId === Number(key.replace("-", "")))
+  }
 
   get id() {
     return Number(this.key.replace("-", ""))
@@ -107,27 +109,48 @@ class MapObject {
     return this.worldId > 10
   }
 
+  public findNodeCash = (nodeId: string) => this.cash && this.cash.nodes.find(node => node.nodeId === nodeId)
+
+  public getNodeEnemies = async (nodeId: string, edges: string[]) => {
+    const { key: mapKey, isEvent } = this
+
+    const nodeCash = this.findNodeCash(nodeId)
+
+    const signale = Signale.scope(`${mapKey} ${nodeId}`)
+    let enemies: PiroEnemy[] | void
+    if (isEvent) {
+      enemies = await getEventNodeEnemies(mapKey, edges).catch(() => signale.fatal("error"))
+    } else {
+      enemies = await getNodeEnemies(mapKey, edges).catch(() => signale.fatal("error"))
+    }
+
+    if (!enemies || enemies.length === 0) {
+      if (nodeCash) {
+        signale.pending("cash")
+        return nodeCash.enemies
+      }
+      signale.pending("no enemy")
+      return
+    }
+
+    signale.success()
+    return enemies
+  }
+
   public getMapData = async (): Promise<MapData> => {
-    const { id: mapId, key: mapKey, isEvent } = this
+    const { id: mapId, key: mapKey, cash } = this
+    if (![453].includes(mapId) && cash) {
+      return cash
+    }
 
     const nodeMap = await getNodeMap(mapKey)
     const nodes = new Array<{ nodeId: string; enemies: PiroEnemy[] }>()
 
     for (const [nodeId, edges] of nodeMap) {
-      const signale = Signale.scope(`${mapKey} ${nodeId}`)
-      let enemies: PiroEnemy[] | void
-      if (isEvent) {
-        enemies = await getEventNodeEnemies(mapKey, edges).catch(() => signale.fatal("error"))
-      } else {
-        enemies = await getNodeEnemies(mapKey, edges).catch(() => signale.fatal("error"))
+      const enemies = await this.getNodeEnemies(nodeId, edges)
+      if (enemies) {
+        nodes.push({ nodeId, enemies })
       }
-
-      if (!enemies || enemies.length === 0) {
-        signale.pending("no enemy")
-        continue
-      }
-      signale.success()
-      nodes.push({ nodeId, enemies })
     }
 
     return { mapId, nodes }
@@ -140,13 +163,7 @@ const download = async (keys: string[]) => {
   const results: MapData[] = []
 
   for (const map of mapList) {
-    const found = rawmaps.find(({ mapId }) => mapId === map.id)
-
-    if (!found || map.isEvent) {
-      results.push(await map.getMapData())
-    } else {
-      results.push(found)
-    }
+    results.push(await map.getMapData())
   }
 
   const maps = flatMap(results)
@@ -154,7 +171,7 @@ const download = async (keys: string[]) => {
 }
 
 const main = async () => {
-  const keys = [[1, 6], [2, 5], [3, 5], [4, 5], [5, 5], [6, 5], [7, 2], [45, 2]].flatMap(([worldId, last]) =>
+  const keys = [[1, 6], [2, 5], [3, 5], [4, 5], [5, 5], [6, 5], [7, 2], [45, 3]].flatMap(([worldId, last]) =>
     range(1, last + 1).map(num => `${worldId}-${num}`)
   )
   download(keys)
