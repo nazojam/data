@@ -11,6 +11,7 @@ type MapKey = string
 type RouteEdge = [string, string, number, number]
 type Route = { [K in number]: RouteEdge }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const sleep = (msec: number) => new Promise(resolve => setTimeout(resolve, msec))
 
 const createParams = async (mapKey: string, edges: string[], diff?: number) => {
@@ -51,11 +52,6 @@ const createParams = async (mapKey: string, edges: string[], diff?: number) => {
     return getParams("2019-01-01")
   }
   return getParams("2018-01-01")
-}
-
-const getAllMapId = async () => {
-  const res = await axios.get("/maps/all")
-  return res.data as MapKey[]
 }
 
 const getNodeMap = async (key: MapKey) => {
