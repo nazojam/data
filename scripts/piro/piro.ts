@@ -167,7 +167,7 @@ const download = async (keys: string[]) => {
   }
 
   const maps = flatMap(results)
-  fs.writeFile("./rawmaps.json", JSON.stringify(maps), console.error)
+  fs.writeFile("scripts/piro/rawmaps.json", JSON.stringify(maps), console.error)
 }
 
 const main = async () => {
