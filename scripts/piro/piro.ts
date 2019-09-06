@@ -113,19 +113,20 @@ class MapObject {
     const nodeCash = this.findNodeCash(nodeId)
 
     const signale = Signale.scope(`${mapKey} ${nodeId}`)
+    signale.await()
     let enemies: PiroEnemy[] | void
     if (isEvent) {
-      enemies = await getEventNodeEnemies(mapKey, edges).catch(() => signale.fatal("error"))
+      enemies = await getEventNodeEnemies(mapKey, edges).catch(() => signale.error("error"))
     } else {
-      enemies = await getNodeEnemies(mapKey, edges).catch(() => signale.fatal("error"))
+      enemies = await getNodeEnemies(mapKey, edges).catch(() => signale.error("error"))
     }
 
     if (!enemies || enemies.length === 0) {
       if (nodeCash) {
-        signale.pending("cash")
+        signale.info("cash")
         return nodeCash.enemies
       }
-      signale.pending("no enemy")
+      signale.info("no enemy")
       return
     }
 

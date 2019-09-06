@@ -31433,9 +31433,9 @@
       30,
       82
     ],
-    "evasion": -1,
-    "asw": -1,
-    "los": -1,
+    "evasion": [44, 76],
+    "asw": [40, 83],
+    "los": [10, 20],
     "antiAir": [
       22,
       42
@@ -36165,9 +36165,9 @@
       0,
       0
     ],
-    "evasion": -1,
-    "asw": -1,
-    "los": -1,
+    "evasion": [40,80],
+    "asw": [40,78],
+    "los": [3,14],
     "antiAir": [
       9,
       36
@@ -36272,9 +36272,9 @@
       0,
       0
     ],
-    "evasion": -1,
-    "asw": -1,
-    "los": -1,
+    "evasion": [54, 89],
+    "asw": [40, 84],
+    "los": [5, 29],
     "antiAir": [
       16,
       60
@@ -36322,9 +36322,9 @@
       18,
       68
     ],
-    "evasion": -1,
-    "asw": -1,
-    "los": -1,
+    "evasion": [18, 94],
+    "asw": [38, 79],
+    "los": [10, 46],
     "antiAir": [
       36,
       80
@@ -37132,12 +37132,12 @@
       22,
       70
     ],
-    "evasion": -1,
+    "evasion": [38, 77],
     "asw": [
       25,
       59
     ],
-    "los": -1,
+    "los": [13, 49],
     "antiAir": [
       24,
       70
@@ -37186,9 +37186,9 @@
       40,
       90
     ],
-    "evasion": -1,
-    "asw": -1,
-    "los": -1,
+    "evasion": [47, 86],
+    "asw": [53, 93],
+    "los": [12, 52],
     "antiAir": [
       30,
       72
@@ -43249,9 +43249,9 @@
     "readingName": "",
     "shipTypeId": 5,
     "classId": 1,
-    "hp": 430,
+    "hp": 450,
     "firepower": 140,
-    "armor": 169,
+    "armor": 179,
     "torpedo": 82,
     "evasion": -2,
     "antiAir": 79,
@@ -48943,10 +48943,10 @@
     "readingName": "",
     "shipTypeId": 2,
     "classId": 1,
-    "hp": -2,
-    "firepower": -2,
-    "armor": -2,
-    "torpedo": -2,
+    "hp": 840,
+    "firepower": 178,
+    "armor": 269,
+    "torpedo": 178,
     "evasion": -1,
     "asw": -1,
     "los": -1,
@@ -48962,7 +48962,12 @@
       0,
       0
     ],
-    "equipments": [],
+    "equipments": [
+      599,
+      599,
+      559,
+      593
+    ],
     "remodel": {
       "nextId": 0,
       "nextLevel": 0
@@ -49052,10 +49057,10 @@
     "readingName": "",
     "shipTypeId": 2,
     "classId": 1,
-    "hp": -2,
-    "firepower": -2,
-    "armor": -2,
-    "torpedo": -2,
+    "hp": 840,
+    "firepower": 189,
+    "armor": 299,
+    "torpedo": 249,
     "evasion": -1,
     "asw": -1,
     "los": -1,
@@ -49071,7 +49076,12 @@
       0,
       0
     ],
-    "equipments": [],
+    "equipments": [
+      599,
+      599,
+      559,
+      593
+    ],
     "remodel": {
       "nextId": 0,
       "nextLevel": 0
