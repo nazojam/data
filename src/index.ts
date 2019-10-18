@@ -15,3 +15,5 @@ export { default as formattedMaps, MapEnemyShip, MapEnemyFleet } from "./formatt
 
 export * from "./GearId"
 export * from "./ShipId"
+export * from "./ShipName"
+export * from "./ShipClass"

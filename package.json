@@ -1,7 +1,7 @@
 {
   "name": "@jervis/data",
   "sideEffects": false,
-  "version": "0.3.3",
+  "version": "0.5.0",
   "main": "commonjs/index.js",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -25,22 +25,22 @@
   "devDependencies": {
     "@types/jest": "^24.0.18",
     "@types/lodash": "^4.14.138",
-    "@types/nedb": "^1.8.8",
-    "@types/node": "^12.7.4",
+    "@types/nedb": "^1.8.9",
+    "@types/node": "^12.7.5",
     "@types/signale": "^1.2.1",
-    "@typescript-eslint/eslint-plugin": "^2.1.0",
-    "@typescript-eslint/parser": "^2.1.0",
+    "@typescript-eslint/eslint-plugin": "^2.3.0",
+    "@typescript-eslint/parser": "^2.3.0",
     "axios": "^0.19.0",
-    "eslint": "^6.3.0",
-    "eslint-config-prettier": "^6.2.0",
+    "eslint": "^6.4.0",
+    "eslint-config-prettier": "^6.3.0",
     "eslint-plugin-prettier": "^3.1.0",
     "jest": "^24.9.0",
     "lodash": "^4.17.15",
     "nedb": "^1.8.0",
     "prettier": "^1.18.2",
     "signale": "^1.4.0",
-    "ts-jest": "^24.0.2",
-    "ts-node": "^8.3.0",
-    "typescript": "^3.6.2"
+    "ts-jest": "^24.1.0",
+    "ts-node": "^8.4.1",
+    "typescript": "^3.6.3"
   }
 }

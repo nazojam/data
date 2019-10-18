@@ -80,6 +80,8 @@ const createShipData = (apiShip: MstShip): ShipData => {
       equippable: getEquippable(apiShip.api_id)
     }
   }
+
+  const classId = apiShip.api_ctype === 1 ? 0 : apiShip.api_ctype
   return {
     id: apiShip.api_id,
     sortNo: 0,
@@ -87,7 +89,7 @@ const createShipData = (apiShip: MstShip): ShipData => {
     name: apiShip.api_name,
     readingName: apiShip.api_yomi,
     shipTypeId: apiShip.api_stype,
-    classId: apiShip.api_ctype,
+    classId,
     hp: -2,
     firepower: -2,
     armor: -2,
