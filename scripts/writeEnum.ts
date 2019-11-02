@@ -1,6 +1,6 @@
 import fs from "fs"
 
-export const createEnum = (fileName: string, enumName: string, data: [string, number][], isConst = true) => {
+export const writeEnum = (fileName: string, enumName: string, data: [string, number][], isConst = true) => {
   const names = data.map(([name]) => name)
   const duplicatedNames = names.filter(name => names.indexOf(name) !== names.lastIndexOf(name))
 

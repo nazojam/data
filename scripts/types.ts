@@ -1,7 +1,7 @@
 import fs from "fs"
 import { chain } from "lodash"
-import { api_mst_ship, MstShip, ships } from "../src"
-import { createEnum } from "./createEnum"
+import { api_mst_ship, api_mst_slotitem, MstShip } from "../src"
+import { writeEnum } from "./writeEnum"
 
 const isPlayerShip = (ship: MstShip) => ship.api_id <= 1500
 const isAbyssalShip = (ship: MstShip) => !isPlayerShip(ship)
@@ -15,25 +15,37 @@ const dataChain = chain(api_mst_ship)
     return { shipId: api_id, name, grade, kind }
   })
 
+const createLiteralType = (typeName: string, types: string[]) => {
+  const inner = types.map(type => `  | "${type}"`).join("\r\n")
+  return `export type ${typeName} =\r\n${inner}\r\n`
+}
+
 export const writeShipName = () => {
   const playerShipNames = dataChain
     .uniqBy("name")
     .filter(ship => ship.shipId <= 1500)
-    .map(({ name }) => `  | "${name}"`)
+    .map(({ name }) => name)
     .value()
 
   const abyssalShipNames = dataChain
     .uniqBy("name")
     .filter(ship => ship.shipId > 1500)
-    .map(({ name }) => `  | "${name}"`)
+    .map(({ name }) => name)
     .value()
 
-  const playerShipType = `export type PlayerShipName =\r\n${playerShipNames.join("\r\n")}\r\n`
-  const abyssalShipType = `export type AbyssalShipName =\r\n${abyssalShipNames.join("\r\n")}\r\n`
+  const playerShipType = createLiteralType("PlayerShipName", playerShipNames)
+  const abyssalShipType = createLiteralType("AbyssalShipName", abyssalShipNames)
 
   const text = `${playerShipType}\r\n${abyssalShipType}\r\nexport type ShipName = PlayerShipName | AbyssalShipName\r\n`
 
   fs.writeFile("src/ShipName.ts", text, console.error)
+}
+
+export const writeGearName = () => {
+  const gearNames = api_mst_slotitem.map(({ api_name }) => api_name)
+  const text = createLiteralType("GearName", gearNames)
+
+  fs.writeFile("src/GearName.ts", text, console.error)
 }
 
 export const writeAbyssalShipClass = () => {
@@ -58,5 +70,16 @@ export const writeAbyssalShipClass = () => {
   const specialClassMap = specialClasses.map((name, index) => [name, 2001 + index] as [string, number])
   const classMap = irohaClassMap.concat(specialClassMap)
 
-  createEnum("src/AbyssalShipClass.ts", "AbyssalShipClass", classMap, false)
+  writeEnum("src/AbyssalShipClass.ts", "AbyssalShipClass", classMap, false)
 }
+
+export const writeShipId = () =>
+  writeEnum("src/ShipId.ts", "ShipId", api_mst_ship.map(({ api_name, api_id }) => [api_name, api_id]))
+export const writeGearId = () =>
+  writeEnum("src/GearId.ts", "GearId", api_mst_slotitem.map(({ api_name, api_id }) => [api_name, api_id]))
+
+writeAbyssalShipClass()
+writeShipName()
+writeGearName()
+writeShipId()
+writeGearId()
