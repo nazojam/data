@@ -1,6 +1,6 @@
 import fs from "fs"
 import { chain } from "lodash"
-import { api_mst_ship, api_mst_slotitem, MstShip } from "../src"
+import { api_mst_ship, api_mst_slotitem, MstShip, ships } from "../src"
 
 const isPlayerShip = (ship: MstShip) => ship.api_id <= 1500
 const isAbyssalShip = (ship: MstShip) => !isPlayerShip(ship)
@@ -66,10 +66,12 @@ export const writeGearName = () => {
   return fs.promises.writeFile("src/GearName.ts", text)
 }
 
-export const writeAbyssalShipClass = () => {
+const nameToClass = (name: string) => name.replace(/後期型|-壊| バカンスmode|改/g, "")
+
+const getAbyssalShipClassMap = () => {
   const classNames = chain(api_mst_ship)
     .filter(isAbyssalShip)
-    .map(ship => ship.api_name.replace(/後期型|-壊| バカンスmode|改/g, ""))
+    .map(ship => nameToClass(ship.api_name))
     .uniq()
     .value()
 
@@ -86,15 +88,38 @@ export const writeAbyssalShipClass = () => {
 
   const irohaClassMap = irohaClasses.map((name, index) => [name, 1001 + index] as [string, number])
   const specialClassMap = specialClasses.map((name, index) => [name, 2001 + index] as [string, number])
-  const classMap = irohaClassMap.concat(specialClassMap)
+  return irohaClassMap.concat(specialClassMap)
+}
 
-  return writeEnum("src/AbyssalShipClass.ts", "AbyssalShipClass", classMap, false)
+export const writeAbyssalShipClass = async () => {
+  const classMap = getAbyssalShipClassMap()
+
+  const nextShips = ships.map(ship => {
+    const next = { ...ship }
+    const className = nameToClass(ship.name)
+    const found = classMap.find(([name, classId]) => name === className)
+    if (found) {
+      next.classId = found[1]
+    }
+    return next
+  })
+
+  await fs.promises.writeFile("src/json/ships.json", JSON.stringify(nextShips))
+  await writeEnum("src/AbyssalShipClass.ts", "AbyssalShipClass", classMap, false)
 }
 
 export const writeShipId = () =>
-  writeEnum("src/ShipId.ts", "ShipId", api_mst_ship.map(({ api_name, api_id }) => [api_name, api_id]))
+  writeEnum(
+    "src/ShipId.ts",
+    "ShipId",
+    api_mst_ship.map(({ api_name, api_id }) => [api_name, api_id])
+  )
 export const writeGearId = () =>
-  writeEnum("src/GearId.ts", "GearId", api_mst_slotitem.map(({ api_name, api_id }) => [api_name, api_id]))
+  writeEnum(
+    "src/GearId.ts",
+    "GearId",
+    api_mst_slotitem.map(({ api_name, api_id }) => [api_name, api_id])
+  )
 
 export const writeRemodelGroup = () => {
   const data = dataChain

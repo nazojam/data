@@ -498,6 +498,8 @@ export type PlayerShipName =
   | "呂500"
   | "まるゆ"
   | "まるゆ改"
+  | "神州丸"
+  | "神州丸改"
   | "あきつ丸"
   | "あきつ丸改"
   | "Bismarck"
@@ -551,6 +553,8 @@ export type PlayerShipName =
   | "Intrepid改"
   | "Gambier Bay"
   | "Gambier Bay改"
+  | "Houston"
+  | "Houston改"
   | "Fletcher"
   | "Fletcher改"
   | "Johnston"
@@ -578,6 +582,10 @@ export type PlayerShipName =
   | "Ташкент改"
   | "Gotland"
   | "Gotland改"
+  | "De Ruyter"
+  | "De Ruyter改"
+  | "Perth"
+  | "Perth改"
 
 export type AbyssalShipName =
   | "駆逐イ級"
@@ -706,5 +714,9 @@ export type AbyssalShipName =
   | "深海地中海棲姫-壊"
   | "アンツィオ沖棲姫"
   | "アンツィオ沖棲姫-壊"
+  | "重巡ネ級改"
+  | "バタビア沖棲姫"
+  | "バタビア沖棲姫-壊"
+  | "軽巡ヘ級改"
 
 export type ShipName = PlayerShipName | AbyssalShipName

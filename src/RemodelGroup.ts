@@ -198,6 +198,7 @@ export const enum RemodelGroup {
   "伊504" = 530,
   "呂500" = 436,
   "まるゆ" = 163,
+  "神州丸" = 621,
   "あきつ丸" = 161,
   "Bismarck" = 171,
   "Graf Zeppelin" = 432,
@@ -222,6 +223,7 @@ export const enum RemodelGroup {
   "Saratoga" = 433,
   "Intrepid" = 549,
   "Gambier Bay" = 544,
+  "Houston" = 595,
   "Fletcher" = 596,
   "Johnston" = 562,
   "Samuel B.Roberts" = 561,
@@ -234,5 +236,7 @@ export const enum RemodelGroup {
   "Commandant Teste" = 491,
   "Гангут" = 511,
   "Ташкент" = 516,
-  "Gotland" = 574
+  "Gotland" = 574,
+  "De Ruyter" = 604,
+  "Perth" = 613
 }

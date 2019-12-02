@@ -354,6 +354,9 @@ export const enum GearId {
   "8inch三連装砲 Mk.9" = 356,
   "8inch三連装砲 Mk.9 mod.2" = 357,
   "5inch 単装高角砲群" = 358,
+  "6inch 連装速射砲 Mk.XXI" = 359,
+  "Bofors 15cm連装速射砲 Mk.9 Model 1938" = 360,
+  "Bofors 15cm連装速射砲 Mk.9改+単装速射砲 Mk.10改 Model 1938" = 361,
   "5inch単装砲" = 501,
   "5inch連装砲" = 502,
   "3inch単装高角砲" = 503,
@@ -452,5 +455,7 @@ export const enum GearId {
   "深海6inch三連装新型速射砲" = 596,
   "深海空要塞(重爆型)" = 597,
   "深海空要塞Ace(重爆型)" = 598,
-  "深海4.7inch砲 Mk.XII" = 599
+  "深海4.7inch砲 Mk.XII" = 599,
+  "深海8inch連装速射砲" = 600,
+  "深海8inch三連装砲 Mk.9" = 601
 }

@@ -78,7 +78,7 @@ const getNodeEnemies = async (map: string, edges: string[], diff?: number): Prom
   return res.data.entries.map(enemy => ({ ...enemy, diff }))
 }
 
-const getEventNodeEnemies = async (map: string, edges: string[]): Promise<PiroEnemy[]> => {
+const getEventNodeEnemies = async (map: string, edges: string[]) => {
   const res = await Promise.all([1, 2, 3, 4].map(diff => getNodeEnemies(map, edges, diff)))
   return res.flat()
 }
@@ -135,8 +135,8 @@ class MapObject {
   }
 
   public getMapData = async (): Promise<MapData> => {
-    const { id: mapId, key: mapKey, cash } = this
-    if (![453].includes(mapId) && cash) {
+    const { id: mapId, key: mapKey, cash, worldId } = this
+    if (worldId < 46 && cash) {
       return cash
     }
 
@@ -168,9 +168,17 @@ const download = async (keys: string[]) => {
 }
 
 const main = async () => {
-  const keys = [[1, 6], [2, 5], [3, 5], [4, 5], [5, 5], [6, 5], [7, 2], [45, 3]].flatMap(([worldId, last]) =>
-    range(1, last + 1).map(num => `${worldId}-${num}`)
-  )
+  const keys = [
+    [1, 6],
+    [2, 5],
+    [3, 5],
+    [4, 5],
+    [5, 5],
+    [6, 5],
+    [7, 2],
+    [45, 3],
+    [46, 4]
+  ].flatMap(([worldId, last]) => range(1, last + 1).map(num => `${worldId}-${num}`))
   download(keys)
 }
 

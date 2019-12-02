@@ -281,6 +281,18 @@ export enum ShipClassId {
   /** 御蔵型 */
   MikuraClass = 94,
 
+  /** Northampton級 */
+  NorthamptonClass = 95,
+
+  /** Perth級 */
+  PerthClass = 96,
+
+  /** R1運送船 */
+  R1 = 97,
+
+  /** De Ruyter級 */
+  DeRuyterClass = 98,
+
   /** 駆逐イ級 */
   DestroyerIClass = 1001,
   /** 駆逐ロ級 */
@@ -454,7 +466,9 @@ export enum ShipClassId {
   /** 深海地中海棲姫 */
   AbyssalMediterraneanPrincess = 2065,
   /** アンツィオ沖棲姫 */
-  AnzioPrincess = 2066
+  AnzioPrincess = 2066,
+  /** バタビア沖棲姫 */
+  BataviaPrincess = 2067
 }
 
 export enum ShipClassJp {
@@ -552,6 +566,10 @@ export enum ShipClassJp {
   "L.d.S.D.d.Abruzzi級" = 92,
   "Colorado級" = 93,
   "御蔵型" = 94,
+  "Northampton級" = 95,
+  "Perth級" = 96,
+  "R1運送船" = 97,
+  "De Ruyter級" = 98,
 
   "駆逐イ級" = 1001,
   "駆逐ロ級" = 1002,
@@ -639,7 +657,8 @@ export enum ShipClassJp {
   "北方棲妹" = 2063,
   "太平洋深海棲姫" = 2064,
   "深海地中海棲姫" = 2065,
-  "アンツィオ沖棲姫" = 2066
+  "アンツィオ沖棲姫" = 2066,
+  "バタビア沖棲姫" = 2067
 }
 
 export type ShipClassKey = keyof typeof ShipClassId
