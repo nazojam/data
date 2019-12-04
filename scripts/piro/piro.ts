@@ -84,13 +84,15 @@ const getEventNodeEnemies = async (map: string, edges: string[]) => {
 }
 
 class MapObject {
-  public cash?: MapData
-  constructor(public key: string) {
-    this.cash = rawmaps.find(map => map.mapId === Number(key.replace("-", "")))
+  public cache?: MapData
+  constructor(public id: number, caching = true) {
+    if (caching) {
+      this.cache = rawmaps.find(map => map.mapId === id)
+    }
   }
 
-  get id() {
-    return Number(this.key.replace("-", ""))
+  get mapKey() {
+    return `${this.worldId}-${this.areaId}`
   }
 
   get worldId() {
@@ -105,10 +107,10 @@ class MapObject {
     return this.worldId > 10
   }
 
-  public findNodeCash = (nodeId: string) => this.cash && this.cash.nodes.find(node => node.nodeId === nodeId)
+  public findNodeCash = (nodeId: string) => this.cache && this.cache.nodes.find(node => node.nodeId === nodeId)
 
   public getNodeEnemies = async (nodeId: string, edges: string[]) => {
-    const { key: mapKey, isEvent } = this
+    const { mapKey, isEvent } = this
 
     const nodeCash = this.findNodeCash(nodeId)
 
@@ -123,7 +125,7 @@ class MapObject {
 
     if (!enemies || enemies.length === 0) {
       if (nodeCash) {
-        signale.info("cash")
+        signale.info("cache")
         return nodeCash.enemies
       }
       signale.info("no enemy")
@@ -135,9 +137,9 @@ class MapObject {
   }
 
   public getMapData = async (): Promise<MapData> => {
-    const { id: mapId, key: mapKey, cash, worldId } = this
-    if (worldId < 46 && cash) {
-      return cash
+    const { id: mapId, mapKey, cache } = this
+    if (cache) {
+      return cache
     }
 
     const nodeMap = await getNodeMap(mapKey)
@@ -154,21 +156,9 @@ class MapObject {
   }
 }
 
-const download = async (keys: string[]) => {
-  const mapList = keys.map(key => new MapObject(key))
-
-  const results: MapData[] = []
-
-  for (const map of mapList) {
-    results.push(await map.getMapData())
-  }
-
-  const maps = flatMap(results)
-  fs.writeFile("scripts/piro/rawmaps.json", JSON.stringify(maps), console.error)
-}
-
-const main = async () => {
-  const keys = [
+type WorldConfig = [number, number, boolean?]
+export const download = async () => {
+  const configs: WorldConfig[] = [
     [1, 6],
     [2, 5],
     [3, 5],
@@ -177,9 +167,20 @@ const main = async () => {
     [6, 5],
     [7, 2],
     [45, 3],
-    [46, 4]
-  ].flatMap(([worldId, last]) => range(1, last + 1).map(num => `${worldId}-${num}`))
-  download(keys)
-}
+    [46, 4, false]
+  ]
+  const mapConfigs = configs.flatMap(([worldId, length, cache]) =>
+    range(length).map(index => [worldId * 10 + index + 1, cache] as const)
+  )
+  const mapList = mapConfigs.map(config => new MapObject(...config))
 
-main()
+  const results: MapData[] = []
+
+  for (const map of mapList) {
+    results.push(await map.getMapData())
+  }
+
+  const maps = flatMap(results)
+  await fs.promises.writeFile("scripts/piro/rawmaps.json", JSON.stringify(maps))
+  return maps
+}
