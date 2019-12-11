@@ -8,8 +8,65 @@ const axios = Axios.create({ baseURL: "http://kc.piro.moe/api/routing" })
 
 type MapKey = string
 
-type RouteEdge = [string, string, number, number]
+enum NodeColor {
+  Start = 0,
+  Resource = 2,
+  Maelstrom = 3,
+  Normal = 4,
+  Boss = 5,
+  Transport = 6,
+  Aerial = 7,
+  Bounty = 8,
+  AerialReconnaissance = 9,
+  AirDefense = 10,
+  LongRangeRadarAmbush = 13,
+  EmergencyAnchorageRepair = 14,
+
+  NoEnemy = 90,
+  Selector = 91
+}
+
+enum NodeEvent {
+  Start = 0,
+  Resource = 2,
+  Maelstrom = 3,
+  Normal = 4,
+  Boss = 5,
+  Avoided = 6,
+  Aerial = 7,
+  Bounty = 8,
+  Transport = 9,
+  EmergencyAnchorageRepair = 10
+}
+
+type Prev = MapKey | null
+type Next = MapKey
+
+type RouteEdge = [Prev, Next, NodeColor, NodeEvent]
 type Route = { [K in number]: RouteEdge }
+
+type X = number
+type Y = number
+type Start = "Start" | null
+type Spot = [X, Y, Start]
+
+type MapResponse = {
+  route: Route
+  spots: { [K in string]: Spot }
+}
+
+const isBattle = (event: NodeEvent) => {
+  switch (event) {
+    case NodeEvent.Start:
+    case NodeEvent.Resource:
+    case NodeEvent.Maelstrom:
+    case NodeEvent.Avoided:
+    case NodeEvent.Bounty:
+    case NodeEvent.Transport:
+      return false
+  }
+  return true
+}
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const sleep = (msec: number) => new Promise(resolve => setTimeout(resolve, msec))
@@ -55,17 +112,21 @@ const createParams = async (mapKey: string, edges: string[], diff?: number) => {
 }
 
 const getNodeMap = async (key: MapKey) => {
-  const res = await axios.get(`/maps/${key}`)
-  const route: Route = res.data.route
+  const res = await axios.get<MapResponse>(`/maps/${key}`)
+  const { route } = res.data
   const nodeMap = new Map<string, string[]>()
   for (const [edgeId, edge] of Object.entries(route)) {
-    const nodeId = edge[1]
+    const [, nodeId, , event] = edge
+    if (!isBattle(event)) {
+      continue
+    }
+
     const edges = nodeMap.get(nodeId)
     if (edges === undefined) {
       nodeMap.set(nodeId, [edgeId])
-      continue
+    } else {
+      edges.push(edgeId)
     }
-    edges.push(edgeId)
   }
   return nodeMap
 }
@@ -167,7 +228,7 @@ export const download = async () => {
     [6, 5],
     [7, 2],
     [45, 3],
-    [46, 5, false]
+    [46, 6, false]
   ]
   const mapConfigs = configs.flatMap(([worldId, length, cache]) =>
     range(length).map(index => [worldId * 10 + index + 1, cache] as const)
