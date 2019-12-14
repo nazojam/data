@@ -55,7 +55,7 @@ type MapResponse = {
   spots: { [K in string]: Spot }
 }
 
-const isBattle = (event: NodeEvent) => {
+const isBattleNode = (event: NodeEvent) => {
   switch (event) {
     case NodeEvent.Start:
     case NodeEvent.Resource:
@@ -117,7 +117,7 @@ const getNodeMap = async (key: MapKey) => {
   const nodeMap = new Map<string, string[]>()
   for (const [edgeId, edge] of Object.entries(route)) {
     const [, nodeId, , event] = edge
-    if (!isBattle(event)) {
+    if (!isBattleNode(event)) {
       continue
     }
 
@@ -220,7 +220,7 @@ class MapObject {
 type WorldConfig = [number, number, boolean?]
 export const download = async () => {
   const configs: WorldConfig[] = [
-    [1, 6],
+    [1, 6, false],
     [2, 5],
     [3, 5],
     [4, 5],
