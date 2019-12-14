@@ -3,73 +3,9 @@ import fs from "fs"
 import { sum, flatMap, range } from "lodash"
 import rawmaps, { PiroEnemy, MapData } from "./rawmaps"
 import Signale from "signale"
+import Kcnav from "./kcnav"
 
 const axios = Axios.create({ baseURL: "http://kc.piro.moe/api/routing" })
-
-type MapKey = string
-
-enum NodeColor {
-  Start = 0,
-  Resource = 2,
-  Maelstrom = 3,
-  Normal = 4,
-  Boss = 5,
-  Transport = 6,
-  Aerial = 7,
-  Bounty = 8,
-  AerialReconnaissance = 9,
-  AirDefense = 10,
-  LongRangeRadarAmbush = 13,
-  EmergencyAnchorageRepair = 14,
-
-  NoEnemy = 90,
-  Selector = 91
-}
-
-enum NodeEvent {
-  Start = 0,
-  Resource = 2,
-  Maelstrom = 3,
-  Normal = 4,
-  Boss = 5,
-  Avoided = 6,
-  Aerial = 7,
-  Bounty = 8,
-  Transport = 9,
-  EmergencyAnchorageRepair = 10
-}
-
-type Prev = MapKey | null
-type Next = MapKey
-
-type RouteEdge = [Prev, Next, NodeColor, NodeEvent]
-type Route = { [K in number]: RouteEdge }
-
-type X = number
-type Y = number
-type Start = "Start" | null
-type Spot = [X, Y, Start]
-
-type MapResponse = {
-  route: Route
-  spots: { [K in string]: Spot }
-}
-
-const isBattleNode = (event: NodeEvent) => {
-  switch (event) {
-    case NodeEvent.Start:
-    case NodeEvent.Resource:
-    case NodeEvent.Maelstrom:
-    case NodeEvent.Avoided:
-    case NodeEvent.Bounty:
-    case NodeEvent.Transport:
-      return false
-  }
-  return true
-}
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const sleep = (msec: number) => new Promise(resolve => setTimeout(resolve, msec))
 
 const createParams = async (mapKey: string, edges: string[], diff?: number) => {
   const params = {
@@ -88,19 +24,17 @@ const createParams = async (mapKey: string, edges: string[], diff?: number) => {
     start
   })
 
-  const { data }: { data: Record<string, number> } = await axios.get(
-    `http://kc.piro.moe/api/routing/heatmaps/${mapKey}?minGauge=1&maxGauge=4&minGaugeLevel=0&maxGaugeLevel=9999&minEdges=0&maxEdges=99&minLos=-40&maxLos=999&minRadars=0&maxRadars=60&minRadarShips=0&maxRadarShips=12&minSpeed=5&maxSpeed=20&nodes=&edges=&fleetType=-1&losType=1&&showEdgeIds=false&retreats=true&cleared=-1&fleetComp=&escortComp=&start=2019-08-01`
-  )
-  const count = sum(edges.map(edge => data[edge]))
+  const heatmap = await Kcnav.getHeatmaps(mapKey)
+  const count = sum(edges.map(edge => heatmap[edge]))
 
   if (count > 10000) {
-    return getParams("2019-08-30")
+    return getParams("2019-12-14")
   }
   if (count > 5000) {
-    return getParams("2019-08-20")
+    return getParams("2019-12-08")
   }
   if (count > 1000) {
-    return getParams("2019-08-01")
+    return getParams("2019-12-01")
   }
   if (count > 100) {
     return getParams("2019-04-01")
@@ -109,26 +43,6 @@ const createParams = async (mapKey: string, edges: string[], diff?: number) => {
     return getParams("2019-01-01")
   }
   return getParams("2018-01-01")
-}
-
-const getNodeMap = async (key: MapKey) => {
-  const res = await axios.get<MapResponse>(`/maps/${key}`)
-  const { route } = res.data
-  const nodeMap = new Map<string, string[]>()
-  for (const [edgeId, edge] of Object.entries(route)) {
-    const [, nodeId, , event] = edge
-    if (!isBattleNode(event)) {
-      continue
-    }
-
-    const edges = nodeMap.get(nodeId)
-    if (edges === undefined) {
-      nodeMap.set(nodeId, [edgeId])
-    } else {
-      edges.push(edgeId)
-    }
-  }
-  return nodeMap
 }
 
 export type PiroEnemycomps = { entryCount?: number; entries: PiroEnemy[] }
@@ -145,11 +59,9 @@ const getEventNodeEnemies = async (map: string, edges: string[]) => {
 }
 
 class MapObject {
-  public cache?: MapData
-  constructor(public id: number, caching = true) {
-    if (caching) {
-      this.cache = rawmaps.find(map => map.mapId === id)
-    }
+  private cache?: MapData
+  constructor(public id: number, public caching = true) {
+    this.cache = rawmaps.find(map => map.mapId === id)
   }
 
   get mapKey() {
@@ -168,14 +80,14 @@ class MapObject {
     return this.worldId > 10
   }
 
-  public findNodeCash = (nodeId: string) => this.cache && this.cache.nodes.find(node => node.nodeId === nodeId)
+  public findNodeCash = (nodeId: string) => this.cache?.nodes.find(node => node.nodeId === nodeId)
+
+  private findCacheEnemies = (nodeId: string) => this.cache?.nodes.find(node => node.nodeId === nodeId)?.enemies
 
   public getNodeEnemies = async (nodeId: string, edges: string[]) => {
     const { mapKey, isEvent } = this
-
-    const nodeCash = this.findNodeCash(nodeId)
-
     const signale = Signale.scope(`${mapKey} ${nodeId}`)
+
     signale.await()
     let enemies: PiroEnemy[] | void
     if (isEvent) {
@@ -185,11 +97,12 @@ class MapObject {
     }
 
     if (!enemies || enemies.length === 0) {
-      if (nodeCash) {
+      const cacheEnemies = this.findCacheEnemies(nodeId)
+      if (cacheEnemies) {
         signale.info("cache")
-        return nodeCash.enemies
+        return cacheEnemies
       }
-      signale.info("no enemy")
+      signale.error("no enemy")
       return
     }
 
@@ -198,15 +111,15 @@ class MapObject {
   }
 
   public getMapData = async (): Promise<MapData> => {
-    const { id: mapId, mapKey, cache } = this
-    if (cache) {
+    const { id: mapId, mapKey, cache, caching } = this
+    if (caching && cache) {
       return cache
     }
 
-    const nodeMap = await getNodeMap(mapKey)
+    const nodeRecord = await Kcnav.getNodeRecord(mapKey)
     const nodes = new Array<{ nodeId: string; enemies: PiroEnemy[] }>()
 
-    for (const [nodeId, edges] of nodeMap) {
+    for (const [nodeId, edges] of nodeRecord) {
       const enemies = await this.getNodeEnemies(nodeId, edges)
       if (enemies) {
         nodes.push({ nodeId, enemies })
@@ -220,7 +133,7 @@ class MapObject {
 type WorldConfig = [number, number, boolean?]
 export const download = async () => {
   const configs: WorldConfig[] = [
-    [1, 6, false],
+    [1, 6],
     [2, 5],
     [3, 5],
     [4, 5],
