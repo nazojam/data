@@ -359,6 +359,7 @@ export type GearName =
   | "Bofors 15cm連装速射砲 Mk.9改+単装速射砲 Mk.10改 Model 1938"
   | "5inch連装両用砲(集中配備)"
   | "GFCS Mk.37+5inch連装両用砲(集中配備)"
+  | "甲標的 丁型改(蛟龍改)"
   | "5inch単装砲"
   | "5inch連装砲"
   | "3inch単装高角砲"
