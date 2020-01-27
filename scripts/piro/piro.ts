@@ -28,13 +28,13 @@ const createParams = async (mapKey: string, edges: string[], diff?: number) => {
   const count = sum(edges.map(edge => heatmap[edge]))
 
   if (count > 10000) {
-    return getParams("2020-01-12")
+    return getParams("2020-01-24")
   }
   if (count > 5000) {
-    return getParams("2020-01-05")
+    return getParams("2020-01-20")
   }
   if (count > 1000) {
-    return getParams("2019-12-01")
+    return getParams("2019-12-10")
   }
   if (count > 100) {
     return getParams("2019-04-01")
@@ -134,14 +134,14 @@ type WorldConfig = [number, number, boolean?]
 export const download = async () => {
   const configs: WorldConfig[] = [
     [1, 6],
-    [2, 5],
-    [3, 5],
-    [4, 5],
-    [5, 5],
-    [6, 5],
-    [7, 2],
+    [2, 5, false],
+    [3, 5, false],
+    [4, 5, false],
+    [5, 5, false],
+    [6, 5, false],
+    [7, 2, false],
     [45, 3],
-    [46, 6, false]
+    [46, 6]
   ]
   const mapConfigs = configs.flatMap(([worldId, length, cache]) =>
     range(length).map(index => [worldId * 10 + index + 1, cache] as const)

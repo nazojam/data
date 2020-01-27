@@ -7,6 +7,7 @@ import Signale from "signale"
 type MapKey = string
 
 enum NodeColor {
+  Unknown = -1,
   Start = 0,
   Resource = 2,
   Maelstrom = 3,
@@ -25,6 +26,7 @@ enum NodeColor {
 }
 
 enum NodeEvent {
+  Unknown = -1,
   Start = 0,
   Resource = 2,
   Maelstrom = 3,
@@ -55,6 +57,7 @@ type MapResponse = {
 
 const isBattleNode = (event: NodeEvent) => {
   switch (event) {
+    case NodeEvent.Unknown:
     case NodeEvent.Start:
     case NodeEvent.Resource:
     case NodeEvent.Maelstrom:
