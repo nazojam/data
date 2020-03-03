@@ -361,6 +361,7 @@ export type GearName =
   | "GFCS Mk.37+5inch連装両用砲(集中配備)"
   | "甲標的 丁型改(蛟龍改)"
   | "一式徹甲弾改"
+  | "12.7cm連装砲D型改三"
   | "5inch単装砲"
   | "5inch連装砲"
   | "3inch単装高角砲"

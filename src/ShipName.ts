@@ -733,5 +733,7 @@ export type AbyssalShipName =
   | "防空巡棲姫-壊"
   | "潜水棲姫改"
   | "潜水棲姫改-壊"
+  | "集積地棲姫II"
+  | "集積地棲姫II-壊"
 
 export type ShipName = PlayerShipName | AbyssalShipName

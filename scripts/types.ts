@@ -66,7 +66,7 @@ export const writeGearName = () => {
   return fs.promises.writeFile("src/GearName.ts", text)
 }
 
-const nameToClass = (name: string) => name.replace(/後期型|-壊| バカンスmode|改/g, "")
+const nameToClass = (name: string) => name.replace(/後期型|-壊| バカンスmode|改|II/g, "")
 
 const getAbyssalShipClassMap = () => {
   const classNames = chain(api_mst_ship)
