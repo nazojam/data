@@ -1,8 +1,4 @@
 import Axios from "axios"
-import readline from "readline"
-import { sum, flatMap, range, find } from "lodash"
-import rawmaps, { PiroEnemy, MapData } from "./rawmaps"
-import Signale from "signale"
 
 type MapKey = string
 
@@ -102,7 +98,7 @@ const heatmapParams = {
   escortComp: "",
   useEscortFs: false,
   allComp: "",
-  start: "2019-12-01"
+  start: "2020-03-01"
 }
 
 const getHeatmaps = (mapKey: string) =>

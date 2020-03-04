@@ -50575,9 +50575,9 @@
     "readingName": "",
     "shipTypeId": 10,
     "classId": 2010,
-    "hp": -2,
-    "firepower": -2,
-    "armor": -2,
+    "hp": 500,
+    "firepower": 70,
+    "armor": 140,
     "torpedo": -2,
     "evasion": -1,
     "asw": -1,
@@ -50593,7 +50593,11 @@
       -1,
       -1
     ],
-    "equipments": [],
+    "equipments": [
+      597,
+      597,
+      594
+    ],
     "remodel": {
       "nextId": 0,
       "nextLevel": 0
@@ -51659,10 +51663,10 @@
     "readingName": "",
     "shipTypeId": 10,
     "classId": 2030,
-    "hp": -2,
-    "firepower": -2,
-    "armor": -2,
-    "torpedo": -2,
+    "hp": 600,
+    "firepower": 70,
+    "armor": 50,
+    "torpedo": 88,
     "evasion": -1,
     "asw": -1,
     "los": -1,
@@ -51673,12 +51677,17 @@
     "fuel": 0,
     "ammo": 0,
     "slotCapacities": [
-      -1,
-      -1,
-      -1,
-      -1
+      9,
+      9,
+      9,
+      9
     ],
-    "equipments": [],
+    "equipments": [
+      561,
+      561,
+      561,
+      561
+    ],
     "remodel": {
       "nextId": 0,
       "nextLevel": 0
@@ -51692,10 +51701,10 @@
     "readingName": "",
     "shipTypeId": 10,
     "classId": 2030,
-    "hp": -2,
-    "firepower": -2,
-    "armor": -2,
-    "torpedo": -2,
+    "hp": 660,
+    "firepower": 90,
+    "armor": 130,
+    "torpedo": 98,
     "evasion": -1,
     "asw": -1,
     "los": -1,
@@ -51706,12 +51715,17 @@
     "fuel": 0,
     "ammo": 0,
     "slotCapacities": [
-      -1,
-      -1,
-      -1,
-      -1
+      12,
+      12,
+      12,
+      12
     ],
-    "equipments": [],
+    "equipments": [
+      562,
+      561,
+      561,
+      561
+    ],
     "remodel": {
       "nextId": 0,
       "nextLevel": 0
@@ -51725,10 +51739,10 @@
     "readingName": "",
     "shipTypeId": 10,
     "classId": 2030,
-    "hp": -2,
-    "firepower": -2,
-    "armor": -2,
-    "torpedo": -2,
+    "hp": 990,
+    "firepower": 130,
+    "armor": 180,
+    "torpedo": 118,
     "evasion": -1,
     "asw": -1,
     "los": -1,
@@ -51739,12 +51753,17 @@
     "fuel": 0,
     "ammo": 0,
     "slotCapacities": [
-      -1,
-      -1,
-      -1,
-      -1
+      22,
+      22,
+      22,
+      22
     ],
-    "equipments": [],
+    "equipments": [
+      562,
+      562,
+      561,
+      561
+    ],
     "remodel": {
       "nextId": 0,
       "nextLevel": 0
@@ -51758,10 +51777,10 @@
     "readingName": "",
     "shipTypeId": 10,
     "classId": 2030,
-    "hp": -2,
-    "firepower": -2,
-    "armor": -2,
-    "torpedo": -2,
+    "hp": 600,
+    "firepower": 130,
+    "armor": 80,
+    "torpedo": 88,
     "evasion": -1,
     "asw": -1,
     "los": -1,
@@ -51777,7 +51796,12 @@
       -1,
       -1
     ],
-    "equipments": [],
+    "equipments": [
+      562,
+      561,
+      561,
+      561
+    ],
     "remodel": {
       "nextId": 0,
       "nextLevel": 0
@@ -51791,10 +51815,10 @@
     "readingName": "",
     "shipTypeId": 10,
     "classId": 2030,
-    "hp": -2,
-    "firepower": -2,
-    "armor": -2,
-    "torpedo": -2,
+    "hp": 660,
+    "firepower": 160,
+    "armor": 170,
+    "torpedo": 98,
     "evasion": -1,
     "asw": -1,
     "los": -1,
@@ -51810,7 +51834,12 @@
       -1,
       -1
     ],
-    "equipments": [],
+    "equipments": [
+      562,
+      562,
+      561,
+      561
+    ],
     "remodel": {
       "nextId": 0,
       "nextLevel": 0
@@ -51824,10 +51853,10 @@
     "readingName": "",
     "shipTypeId": 10,
     "classId": 2030,
-    "hp": -2,
-    "firepower": -2,
-    "armor": -2,
-    "torpedo": -2,
+    "hp": 990,
+    "firepower": 190,
+    "armor": 240,
+    "torpedo": 118,
     "evasion": -1,
     "asw": -1,
     "los": -1,
@@ -51838,12 +51867,17 @@
     "fuel": 0,
     "ammo": 0,
     "slotCapacities": [
-      -1,
-      -1,
-      -1,
-      -1
+      26,
+      26,
+      26,
+      26
     ],
-    "equipments": [],
+    "equipments": [
+      562,
+      562,
+      562,
+      561
+    ],
     "remodel": {
       "nextId": 0,
       "nextLevel": 0
