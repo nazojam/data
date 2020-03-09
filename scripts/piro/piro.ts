@@ -28,7 +28,7 @@ const createParams = async (mapKey: string, edges: string[], diff?: number) => {
   const count = sum(edges.map(edge => heatmap[edge]))
 
   if (count > 10000) {
-    return getParams("2020-03-01")
+    return getParams("2020-03-04")
   }
   if (count > 5000) {
     return getParams("2020-02-25")
