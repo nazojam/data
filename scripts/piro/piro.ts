@@ -14,18 +14,18 @@ const createParams = async (mapKey: string, edges: string[], diff?: number) => {
     minGaugeLevel: 0,
     maxGaugeLevel: 9999,
     minGauge: 1,
-    maxGauge: 4
+    maxGauge: 4,
   }
 
   const getParams = (start: string) => ({
     ...params,
     map: mapKey,
     edges: edges.join(","),
-    start
+    start,
   })
 
   const heatmap = await Kcnav.getHeatmaps(mapKey)
-  const count = sum(edges.map(edge => heatmap[edge]))
+  const count = sum(edges.map((edge) => heatmap[edge]))
 
   if (count > 10000) {
     return getParams("2020-03-04")
@@ -50,18 +50,18 @@ export type PiroEnemycomps = { entryCount?: number; entries: PiroEnemy[] }
 const getNodeEnemies = async (map: string, edges: string[], diff?: number): Promise<PiroEnemy[]> => {
   const params = await createParams(map, edges, diff)
   const res: { data: PiroEnemycomps } = await axios.get("/enemycomps", { params })
-  return res.data.entries.map(enemy => ({ ...enemy, diff }))
+  return res.data.entries.map((enemy) => ({ ...enemy, diff }))
 }
 
 const getEventNodeEnemies = async (map: string, edges: string[]) => {
-  const res = await Promise.all([1, 2, 3, 4].map(diff => getNodeEnemies(map, edges, diff)))
+  const res = await Promise.all([1, 2, 3, 4].map((diff) => getNodeEnemies(map, edges, diff)))
   return res.flat()
 }
 
 class MapObject {
   private cache?: MapData
   constructor(public id: number, public caching = true) {
-    this.cache = rawmaps.find(map => map.mapId === id)
+    this.cache = rawmaps.find((map) => map.mapId === id)
   }
 
   get mapKey() {
@@ -80,9 +80,9 @@ class MapObject {
     return this.worldId > 10
   }
 
-  public findNodeCash = (nodeId: string) => this.cache?.nodes.find(node => node.nodeId === nodeId)
+  public findNodeCash = (nodeId: string) => this.cache?.nodes.find((node) => node.nodeId === nodeId)
 
-  private findCacheEnemies = (nodeId: string) => this.cache?.nodes.find(node => node.nodeId === nodeId)?.enemies
+  private findCacheEnemies = (nodeId: string) => this.cache?.nodes.find((node) => node.nodeId === nodeId)?.enemies
 
   public getNodeEnemies = async (nodeId: string, edges: string[]) => {
     const { mapKey, isEvent } = this
@@ -142,12 +142,13 @@ export const download = async () => {
     [7, 2],
     [45, 3],
     [46, 6],
-    [47, 1, false]
+    [47, 1],
+    [48, 4, false],
   ]
   const mapConfigs = configs.flatMap(([worldId, length, cache]) =>
-    range(length).map(index => [worldId * 10 + index + 1, cache] as const)
+    range(length).map((index) => [worldId * 10 + index + 1, cache] as const)
   )
-  const mapList = mapConfigs.map(config => new MapObject(...config))
+  const mapList = mapConfigs.map((config) => new MapObject(...config))
 
   const results: MapData[] = []
 
