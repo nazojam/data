@@ -302,6 +302,12 @@ export enum ShipClassId {
   /** 松型 */
   MatsuClass = 101,
 
+  /** 巡潜丙型 */
+  JunsenTypeC = 103,
+
+  /** 丁型海防艦 */
+  TypeDCoastalDefenseShip = 104,
+
   /** 駆逐イ級 */
   DestroyerIClass = 1001,
   /** 駆逐ロ級 */
@@ -584,6 +590,9 @@ export enum ShipClassJp {
   "Atlanta級" = 99,
   "迅鯨型" = 100,
   "松型" = 101,
+
+  "巡潜丙型" = 103,
+  "丁型海防艦" = 104,
 
   "駆逐イ級" = 1001,
   "駆逐ロ級" = 1002,
