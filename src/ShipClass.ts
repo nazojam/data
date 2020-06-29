@@ -292,8 +292,15 @@ export enum ShipClassId {
 
   /** De Ruyter級 */
   DeRuyterClass = 98,
+
   /**  Atlanta級 */
   AtlantaClass = 99,
+
+  /** 迅鯨型 */
+  JingeiClass = 100,
+
+  /** 松型 */
+  MatsuClass = 101,
 
   /** 駆逐イ級 */
   DestroyerIClass = 1001,
@@ -472,7 +479,7 @@ export enum ShipClassId {
   /** バタビア沖棲姫 */
   BataviaPrincess = 2067,
   /** 防空巡棲姫 */
-  AirDefenseCruiserPrincess = 2068
+  AirDefenseCruiserPrincess = 2068,
 }
 
 export enum ShipClassJp {
@@ -575,6 +582,8 @@ export enum ShipClassJp {
   "R1運送船" = 97,
   "De Ruyter級" = 98,
   "Atlanta級" = 99,
+  "迅鯨型" = 100,
+  "松型" = 101,
 
   "駆逐イ級" = 1001,
   "駆逐ロ級" = 1002,
@@ -664,7 +673,7 @@ export enum ShipClassJp {
   "深海地中海棲姫" = 2065,
   "アンツィオ沖棲姫" = 2066,
   "バタビア沖棲姫" = 2067,
-  "防空巡棲姫" = 2068
+  "防空巡棲姫" = 2068,
 }
 
 export type ShipClassKey = keyof typeof ShipClassId
