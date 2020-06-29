@@ -18,7 +18,7 @@ enum NodeColor {
   EmergencyAnchorageRepair = 14,
 
   NoEnemy = 90,
-  Selector = 91
+  Selector = 91,
 }
 
 enum NodeEvent {
@@ -32,7 +32,7 @@ enum NodeEvent {
   Aerial = 7,
   Bounty = 8,
   Transport = 9,
-  EmergencyAnchorageRepair = 10
+  EmergencyAnchorageRepair = 10,
 }
 
 type Prev = MapKey | null
@@ -66,47 +66,18 @@ const isBattleNode = (event: NodeEvent) => {
   return true
 }
 
-const client = Axios.create({ baseURL: "http://kc.piro.moe/api/routing" })
+const client = Axios.create({ baseURL: "http://kc.piro.moe/api/routing", timeout: 60000 })
 
 const heatmapParams = {
-  maxGauge: 4,
-  minGaugeLevel: 0,
-  maxGaugeLevel: 9999,
-  minEdges: 0,
-  maxEdges: 99,
-  minLos: -40,
-  maxLos: 999,
-  minRadars: 0,
-  maxRadars: 60,
-  minRadarShips: 0,
-  maxRadarShips: 12,
-  minSpeed: 5,
-  maxSpeed: 20,
-  nodes: "",
-  edges: "",
-  fleetType: -1,
-  losType: 1,
-  radarType: 0,
-  difficulty: 0,
-  showEdgeIds: false,
-  showLbasDistance: true,
-  showMapBackground: true,
-  retreats: true,
-  cleared: -1,
-  mainComp: "",
-  useMainFs: false,
-  escortComp: "",
-  useEscortFs: false,
-  allComp: "",
-  start: "2020-03-01"
+  start: "2020-06-26",
 }
 
 const getHeatmaps = (mapKey: string) =>
   client
     .get<{ result: Record<string, number> }>(`/heatmaps/${mapKey}`, { params: heatmapParams })
-    .then(res => res.data.result)
+    .then((res) => res.data.result)
 
-const getRouteData = (key: MapKey) => client.get<MapResponse>(`/maps/${key}`).then(res => res.data)
+const getRouteData = (key: MapKey) => client.get<MapResponse>(`/maps/${key}`).then((res) => res.data)
 
 const getNodeRecord = async (key: MapKey) => {
   const { route, spots } = await getRouteData(key)
@@ -130,5 +101,5 @@ const getNodeRecord = async (key: MapKey) => {
 
 export default {
   getHeatmaps,
-  getNodeRecord
+  getNodeRecord,
 }

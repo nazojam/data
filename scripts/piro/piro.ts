@@ -5,9 +5,11 @@ import rawmaps, { PiroEnemy, MapData } from "./rawmaps"
 import Signale from "signale"
 import Kcnav from "./kcnav"
 
-const axios = Axios.create({ baseURL: "http://kc.piro.moe/api/routing" })
+const axios = Axios.create({ baseURL: "http://kc.piro.moe/api/routing", timeout: 60000 })
 
-const createParams = async (mapKey: string, edges: string[], diff?: number) => {
+const sleep = (msec: number) => new Promise((resolve) => setTimeout(resolve, msec))
+
+const createParams = (mapKey: string, edges: string[], diff?: number) => {
   const params = {
     minDiff: diff,
     maxDiff: diff,
@@ -24,33 +26,23 @@ const createParams = async (mapKey: string, edges: string[], diff?: number) => {
     start,
   })
 
-  const heatmap = await Kcnav.getHeatmaps(mapKey)
-  const count = sum(edges.map((edge) => heatmap[edge]))
-
-  if (count > 10000) {
-    return getParams("2020-03-04")
-  }
-  if (count > 5000) {
-    return getParams("2020-02-25")
-  }
-  if (count > 1000) {
-    return getParams("2020-01-01")
-  }
-  if (count > 100) {
-    return getParams("2019-04-01")
-  }
-  if (count > 50) {
-    return getParams("2019-01-01")
-  }
-  return getParams("2018-01-01")
+  return getParams("2020-06-25")
 }
 
 export type PiroEnemycomps = { entryCount?: number; entries: PiroEnemy[] }
 
-const getNodeEnemies = async (map: string, edges: string[], diff?: number): Promise<PiroEnemy[]> => {
-  const params = await createParams(map, edges, diff)
-  const res: { data: PiroEnemycomps } = await axios.get("/enemycomps", { params })
-  return res.data.entries.map((enemy) => ({ ...enemy, diff }))
+const getNodeEnemies = async (map: string, edges: string[], diff?: number, count = 0): Promise<PiroEnemy[]> => {
+  try {
+    const params = createParams(map, edges, diff)
+    const res = await axios.get<PiroEnemycomps>("/enemycomps", { params })
+
+    return res.data.entries.map((enemy) => ({ ...enemy, diff }))
+  } catch (error) {
+    console.error(error.code)
+    await sleep(10000)
+    if (count > 4) return []
+    return await getNodeEnemies(map, edges, diff, count++)
+  }
 }
 
 const getEventNodeEnemies = async (map: string, edges: string[]) => {
