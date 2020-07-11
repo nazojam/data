@@ -293,7 +293,7 @@ export enum ShipClassId {
   /** De Ruyter級 */
   DeRuyterClass = 98,
 
-  /**  Atlanta級 */
+  /** Atlanta級 */
   AtlantaClass = 99,
 
   /** 迅鯨型 */
@@ -302,11 +302,17 @@ export enum ShipClassId {
   /** 松型 */
   MatsuClass = 101,
 
+  SouthDakotaClass = 102,
+
   /** 巡潜丙型 */
   JunsenTypeC = 103,
 
   /** 丁型海防艦 */
   TypeDCoastalDefenseShip = 104,
+
+  YorktownClass = 105,
+
+  StLouisClass = 106,
 
   /** 駆逐イ級 */
   DestroyerIClass = 1001,
@@ -596,9 +602,11 @@ export enum ShipClassJp {
   "Atlanta級" = 99,
   "迅鯨型" = 100,
   "松型" = 101,
-
+  "South Dakota級 " = 102,
   "巡潜丙型" = 103,
   "丁型海防艦" = 104,
+  "Yorktown級" = 105,
+  "St.Louis級" = 106,
 
   "駆逐イ級" = 1001,
   "駆逐ロ級" = 1002,
