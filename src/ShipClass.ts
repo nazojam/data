@@ -692,6 +692,8 @@ export enum ShipClassJp {
   "深海千島棲姫" = 2069,
   "五島沖海底姫" = 2070,
   "駆逐林棲姫" = 2071,
+  "南方戦艦新棲姫" = 2072,
+  "南太平洋空母棲姫" = 2073,
 }
 
 export type ShipClassKey = keyof typeof ShipClassId
