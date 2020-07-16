@@ -4,6 +4,7 @@ export type PiroShip = {
   hp?: number
   fp?: number
   torp?: number
+  aa?: number
   armor?: number
   equips: [number, number, number, number, number]
 }

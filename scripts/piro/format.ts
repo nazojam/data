@@ -16,19 +16,19 @@ export const formatMaps = (rawmaps: MapData[]) => {
       mainFleet: mainFleet.map(formatShip),
       escortFleet: escortFleet.map(formatShip),
       formation,
-      difficulty: diff
+      difficulty: diff,
     }
   }
 
   const formatNode = ({ nodeId, enemies }: NodeData) => ({ nodeId, enemies: enemies.map(formatEnemy) })
 
-  const formattedMaps = rawmaps.map(data => ({
+  const formattedMaps = rawmaps.map((data) => ({
     mapId: data.mapId,
-    nodes: data.nodes.map(formatNode)
+    nodes: data.nodes.map(formatNode),
   }))
 
   for (const [id, piroShip] of shipMap) {
-    const dataShip = ships.find(ship => ship.id === id)
+    const dataShip = ships.find((ship) => ship.id === id)
     if (!dataShip) {
       continue
     }
@@ -43,15 +43,19 @@ export const formatMaps = (rawmaps: MapData[]) => {
       dataShip.hp = piroShip.hp
     }
     if (piroShip.torp !== undefined && piroShip.torp !== dataShip.torpedo) {
-      signale.fatal(`armor ${piroShip.torp} !== ${dataShip.torpedo}`)
+      signale.fatal(`torpedo ${piroShip.torp} !== ${dataShip.torpedo}`)
       dataShip.torpedo = piroShip.torp
     }
+    if (piroShip.aa !== undefined && piroShip.aa !== dataShip.antiAir) {
+      signale.fatal(`antiAir ${piroShip.aa} !== ${dataShip.antiAir}`)
+      dataShip.antiAir = piroShip.aa
+    }
     if (piroShip.fp !== undefined && piroShip.fp !== dataShip.firepower) {
-      signale.fatal(`armor ${piroShip.fp} !== ${dataShip.firepower}`)
+      signale.fatal(`firepower ${piroShip.fp} !== ${dataShip.firepower}`)
       dataShip.firepower = piroShip.fp
     }
 
-    const equips = piroShip.equips.filter(eq => eq > 0)
+    const equips = piroShip.equips.filter((eq) => eq > 0)
     if (!equips.every((eq, index) => eq === dataShip.equipments[index])) {
       signale.fatal(`equip ${equips} !== ${dataShip.equipments}`)
       dataShip.equipments = equips
