@@ -26709,7 +26709,7 @@
     "luck": -2,
     "fuel": 0,
     "ammo": 0,
-    "slotCapacities": [-1, -1, -1, -1],
+    "slotCapacities": [22, 22, 22, 11],
     "equipments": [581, 582, 557, 583],
     "remodel": { "nextId": 0, "nextLevel": 0 }
   },
@@ -26759,7 +26759,7 @@
     "luck": -2,
     "fuel": 0,
     "ammo": 0,
-    "slotCapacities": [-1, -1, -1, -1],
+    "slotCapacities": [36, 24, 24, 16],
     "equipments": [581, 582, 557, 583],
     "remodel": { "nextId": 0, "nextLevel": 0 }
   },
@@ -26784,7 +26784,7 @@
     "luck": -2,
     "fuel": 0,
     "ammo": 0,
-    "slotCapacities": [-1, -1, -1, -1],
+    "slotCapacities": [23, 23, 22, 22],
     "equipments": [581, 582, 557, 583],
     "remodel": { "nextId": 0, "nextLevel": 0 }
   },
