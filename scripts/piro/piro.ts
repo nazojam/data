@@ -38,16 +38,20 @@ const getNodeEnemies = async (map: string, edges: string[], diff?: number, count
 
     return res.data.entries.map((enemy) => ({ ...enemy, diff }))
   } catch (error) {
-    console.error(error.code)
+    Signale.error(count, error.code)
     await sleep(10000)
-    if (count > 4) return []
-    return await getNodeEnemies(map, edges, diff, count++)
+    if (count >= 5) return []
+    return await getNodeEnemies(map, edges, diff, count + 1)
   }
 }
 
 const getEventNodeEnemies = async (map: string, edges: string[]) => {
-  const res = await Promise.all([1, 2, 3, 4].map((diff) => getNodeEnemies(map, edges, diff)))
-  return res.flat()
+  const result: PiroEnemy[] = []
+  for (const diff of [1, 2, 3, 4]) {
+    const res = await getNodeEnemies(map, edges, diff)
+    result.push(...res)
+  }
+  return result
 }
 
 class MapObject {
