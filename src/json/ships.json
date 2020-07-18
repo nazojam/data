@@ -15085,7 +15085,7 @@
   {
     "id": 612,
     "sortNo": 412,
-    "sortId": 21051,
+    "sortId": 21061,
     "name": "屋代",
     "readingName": "やしろ",
     "shipTypeId": 1,
@@ -15210,7 +15210,7 @@
   {
     "id": 617,
     "sortNo": 417,
-    "sortId": 21052,
+    "sortId": 21062,
     "name": "屋代改",
     "readingName": "やしろ",
     "shipTypeId": 1,
@@ -16388,7 +16388,11 @@
     "ammo": 20,
     "slotCapacities": [0, 0, 0],
     "equipments": [],
-    "remodel": { "nextId": 0, "nextLevel": 0 }
+    "remodel": { "nextId": 0, "nextLevel": 0 },
+    "equippable": {
+      "categories": [1, 5, 12, 14, 15, 17, 20, 21, 23, 24, 29, 30, 33, 36, 37, 39, 43],
+      "expantionSlot": []
+    }
   },
   {
     "id": 704,
