@@ -32,6 +32,8 @@ const createParams = (mapKey: string, edges: string[], diff?: number) => {
 export type PiroEnemycomps = { entryCount?: number; entries: PiroEnemy[] }
 
 const getNodeEnemies = async (map: string, edges: string[], diff?: number, count = 0): Promise<PiroEnemy[]> => {
+  await sleep(10000)
+
   try {
     const params = createParams(map, edges, diff)
     const res = await axios.get<PiroEnemycomps>("/enemycomps", { params })
@@ -39,7 +41,7 @@ const getNodeEnemies = async (map: string, edges: string[], diff?: number, count
     return res.data.entries.map((enemy) => ({ ...enemy, diff }))
   } catch (error) {
     Signale.error(count, error.code)
-    await sleep(10000)
+
     if (count >= 5) return []
     return await getNodeEnemies(map, edges, diff, count + 1)
   }
