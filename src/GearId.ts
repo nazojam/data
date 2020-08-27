@@ -384,6 +384,7 @@ export const enum GearId {
   "6inch三連装速射砲 Mk.16" = 386,
   "6inch三連装速射砲 Mk.16 mod.2" = 387,
   "銀河(江草隊)" = 388,
+  "TBM-3W+3S" = 389,
   "5inch単装砲" = 501,
   "5inch連装砲" = 502,
   "3inch単装高角砲" = 503,

@@ -384,6 +384,7 @@ export type GearName =
   | "6inch三連装速射砲 Mk.16"
   | "6inch三連装速射砲 Mk.16 mod.2"
   | "銀河(江草隊)"
+  | "TBM-3W+3S"
   | "5inch単装砲"
   | "5inch連装砲"
   | "3inch単装高角砲"
