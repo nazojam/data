@@ -6,7 +6,7 @@ import {
   ShipData,
   MstAllyShip,
   MstShip,
-  ships
+  ships,
 } from "../src"
 
 const isMstAllyShip = (mstShip: MstShip): mstShip is MstAllyShip => "api_houg" in mstShip
@@ -28,12 +28,12 @@ const getRemodel = (mstShip: MstShip) => {
     const { api_aftershipid, api_afterlv } = mstShip
     return {
       nextId: Number(api_aftershipid),
-      nextLevel: api_afterlv
+      nextLevel: api_afterlv,
     }
   }
   return {
     nextId: 0,
-    nextLevel: 0
+    nextLevel: 0,
   }
 }
 
@@ -45,7 +45,7 @@ const getEquippable = (masterId: number) => {
   if (found || expantionSlot.length > 0) {
     return {
       categories: found && found.api_equip_type,
-      expantionSlot
+      expantionSlot,
     }
   }
   return undefined
@@ -77,7 +77,7 @@ const createShipData = (apiShip: MstShip): ShipData => {
       slotCapacities: getSlotCapacities(apiShip),
       equipments: [],
       remodel: getRemodel(apiShip),
-      equippable: getEquippable(apiShip.api_id)
+      equippable: getEquippable(apiShip.api_id),
     }
   }
 
@@ -105,7 +105,7 @@ const createShipData = (apiShip: MstShip): ShipData => {
     ammo: 0,
     slotCapacities: getSlotCapacities(apiShip),
     equipments: [],
-    remodel: getRemodel(apiShip)
+    remodel: getRemodel(apiShip),
   }
 }
 
@@ -124,7 +124,6 @@ for (const apiShip of api_mst_ship) {
     nextShipData.evasion = shipData.evasion
     nextShipData.asw = shipData.asw
     nextShipData.los = shipData.los
-    nextShipData.slotCapacities = shipData.slotCapacities
     nextShipData.equipments = shipData.equipments
 
     newShipsData.push(nextShipData)

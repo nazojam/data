@@ -13611,7 +13611,7 @@
     "luck": [40, 93],
     "fuel": 115,
     "ammo": 140,
-    "slotCapacities": [2, 4, 22, 11, 11],
+    "slotCapacities": [2, 8, 24, 12, 11],
     "equipments": [],
     "remodel": { "nextId": 0, "nextLevel": 0 },
     "equippable": {
