@@ -26,7 +26,7 @@ const createParams = (mapKey: string, edges: string[], diff?: number) => {
     start,
   })
 
-  return getParams("2020-06-25")
+  return getParams("2020-11-27")
 }
 
 export type PiroEnemycomps = { entryCount?: number; entries: PiroEnemy[] }
@@ -141,7 +141,8 @@ export const download = async () => {
     [45, 3],
     [46, 6],
     [47, 1],
-    [48, 7, false],
+    [48, 7],
+    [49, 3, false],
   ]
   const mapConfigs = configs.flatMap(([worldId, length, cache]) =>
     range(length).map((index) => [worldId * 10 + index + 1, cache] as const)
