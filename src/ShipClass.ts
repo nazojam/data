@@ -314,6 +314,12 @@ export enum ShipClassId {
 
   StLouisClass = 106,
 
+  /** North Carolina級 */
+  NorthCarolinaClass = 107,
+
+  /** Town級 */
+  TownClass = 108,
+
   /** 駆逐イ級 */
   DestroyerIClass = 1001,
   /** 駆逐ロ級 */
@@ -607,6 +613,8 @@ export enum ShipClassJp {
   "丁型海防艦" = 104,
   "Yorktown級" = 105,
   "St.Louis級" = 106,
+  "North Carolina級" = 107,
+  "Town級" = 108,
 
   "駆逐イ級" = 1001,
   "駆逐ロ級" = 1002,
@@ -702,6 +710,8 @@ export enum ShipClassJp {
   "駆逐林棲姫" = 2071,
   "南方戦艦新棲姫" = 2072,
   "南太平洋空母棲姫" = 2073,
+  "戦艦新棲姫" = 2074,
+  "深海竹棲姫" = 2075,
 }
 
 export type ShipClassKey = keyof typeof ShipClassId
