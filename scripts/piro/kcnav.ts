@@ -80,7 +80,7 @@ const getHeatmaps = (mapKey: string) =>
 const getRouteData = (key: MapKey) => client.get<MapResponse>(`/maps/${key}`).then((res) => res.data)
 
 const getNodeRecord = async (key: MapKey) => {
-  const { route, spots } = await getRouteData(key)
+  const { route } = await getRouteData(key)
 
   const nodeRecord = new Map<string, string[]>()
   for (const [edgeId, edge] of Object.entries(route)) {

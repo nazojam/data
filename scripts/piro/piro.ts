@@ -1,11 +1,11 @@
 import Axios from "axios"
 import fs from "fs"
-import { sum, flatMap, range } from "lodash"
+import { flatMap, range } from "lodash"
 import rawmaps, { PiroEnemy, MapData } from "./rawmaps"
 import Signale from "signale"
 import Kcnav from "./kcnav"
 
-const axios = Axios.create({ baseURL: "http://kc.piro.moe/api/routing", timeout: 60000 })
+const axios = Axios.create({ baseURL: "http://kc.piro.moe/api/routing", timeout: 1000 * 60 * 5 })
 
 const sleep = (msec: number) => new Promise((resolve) => setTimeout(resolve, msec))
 
@@ -32,18 +32,17 @@ const createParams = (mapKey: string, edges: string[], diff?: number) => {
 export type PiroEnemycomps = { entryCount?: number; entries: PiroEnemy[] }
 
 const getNodeEnemies = async (map: string, edges: string[], diff?: number, count = 0): Promise<PiroEnemy[]> => {
-  await sleep(10000)
-
   try {
     const params = createParams(map, edges, diff)
     const res = await axios.get<PiroEnemycomps>("/enemycomps", { params })
 
     return res.data.entries.map((enemy) => ({ ...enemy, diff }))
   } catch (error) {
+    const nextCount = count + 1
     Signale.error(count, error.code)
 
-    if (count >= 5) return []
-    return await getNodeEnemies(map, edges, diff, count + 1)
+    await sleep(nextCount * 1000 * 10)
+    return await getNodeEnemies(map, edges, diff, nextCount)
   }
 }
 
@@ -142,7 +141,7 @@ export const download = async () => {
     [46, 6],
     [47, 1],
     [48, 7],
-    [49, 3, false],
+    [49, 4],
   ]
   const mapConfigs = configs.flatMap(([worldId, length, cache]) =>
     range(length).map((index) => [worldId * 10 + index + 1, cache] as const)
