@@ -26,7 +26,7 @@ const createParams = (mapKey: string, edges: string[], diff?: number) => {
     start,
   })
 
-  return getParams("2020-11-27")
+  return getParams("2020-12-01")
 }
 
 export type PiroEnemycomps = { entryCount?: number; entries: PiroEnemy[] }
@@ -39,7 +39,7 @@ const getNodeEnemies = async (map: string, edges: string[], diff?: number, count
     return res.data.entries.map((enemy) => ({ ...enemy, diff }))
   } catch (error) {
     const nextCount = count + 1
-    Signale.error(count, error.code)
+    Signale.error(count, error.code || error.response.statusText)
 
     await sleep(nextCount * 1000 * 10)
     return await getNodeEnemies(map, edges, diff, nextCount)
@@ -136,7 +136,7 @@ export const download = async () => {
     [4, 5],
     [5, 5],
     [6, 5],
-    [7, 2],
+    [7, 3],
     [45, 3],
     [46, 6],
     [47, 1],
