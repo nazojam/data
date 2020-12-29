@@ -141,7 +141,7 @@ export const download = async () => {
     [46, 6],
     [47, 1],
     [48, 7],
-    [49, 4],
+    [49, 4, false],
   ]
   const mapConfigs = configs.flatMap(([worldId, length, cache]) =>
     range(length).map((index) => [worldId * 10 + index + 1, cache] as const)

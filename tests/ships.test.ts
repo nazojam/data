@@ -2,7 +2,7 @@ import { ships, ShipStat } from "../src"
 import Datastore from "nedb"
 
 const shipDatabase = new Datastore({
-  filename: "scripts/WhoCallsTheFleet-DB/db/ships.nedb"
+  filename: "scripts/WhoCallsTheFleet-DB/db/ships.nedb",
 })
 
 shipDatabase.loadDatabase(console.error)
@@ -52,7 +52,7 @@ for (const masterShip of ships) {
       evasion: evasion[0],
       evasion_max: evasion[1],
       luck: luck[0],
-      luck_max: luck[1]
+      luck_max: luck[1],
     })
   })
 }
