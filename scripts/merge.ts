@@ -3,7 +3,7 @@ import Datastore from "nedb"
 import fs from "fs"
 
 const shipDatabase = new Datastore({
-  filename: "scripts/WhoCallsTheFleet-DB/db/ships.nedb"
+  filename: "scripts/WhoCallsTheFleet-DB/db/ships.nedb",
 })
 
 shipDatabase.loadDatabase(console.error)
