@@ -5735,7 +5735,7 @@
     "ammo": 20,
     "slotCapacities": [0, 0, 0],
     "equipments": [3, 13],
-    "remodel": { "nextId": 0, "nextLevel": 0 }
+    "remodel": { "nextId": 665, "nextLevel": 82 }
   },
   {
     "id": 232,
@@ -15387,7 +15387,7 @@
     "remodel": { "nextId": 626, "nextLevel": 48 },
     "equippable": {
       "categories": [1, 4, 10, 12, 15, 16, 17, 20, 21, 23, 24, 27, 30, 34, 37, 39, 40, 43, 45, 46],
-      "expantionSlot": []
+      "expantionSlot": [408]
     }
   },
   {
@@ -15557,7 +15557,7 @@
         45,
         46
       ],
-      "expantionSlot": []
+      "expantionSlot": [408]
     }
   },
   {
@@ -16261,6 +16261,31 @@
       ],
       "expantionSlot": [66, 220]
     }
+  },
+  {
+    "id": 665,
+    "sortNo": 465,
+    "sortId": 14186,
+    "name": "曙改二",
+    "readingName": "あけぼの",
+    "shipTypeId": 2,
+    "classId": 1,
+    "hp": [31, 51],
+    "firepower": [10, 60],
+    "armor": [14, 54],
+    "torpedo": [25, 87],
+    "evasion": -1,
+    "asw": -1,
+    "los": -1,
+    "antiAir": [22, 80],
+    "speed": 10,
+    "range": 1,
+    "luck": [18, 88],
+    "fuel": 15,
+    "ammo": 20,
+    "slotCapacities": [0, 0, 0],
+    "equipments": [],
+    "remodel": { "nextId": 0, "nextLevel": 0 }
   },
   {
     "id": 678,

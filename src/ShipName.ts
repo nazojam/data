@@ -307,6 +307,7 @@ export type PlayerShipName =
   | "朧改"
   | "曙"
   | "曙改"
+  | "曙改二"
   | "漣"
   | "漣改"
   | "潮"

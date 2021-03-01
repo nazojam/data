@@ -403,6 +403,8 @@ export type GearName =
   | "Do 217 E-5+Hs293初期型"
   | "Do 217 K-2+Fritz-X"
   | "15.2cm連装砲改二"
+  | "装甲艇(AB艇)"
+  | "武装大発"
   | "5inch単装砲"
   | "5inch連装砲"
   | "3inch単装高角砲"

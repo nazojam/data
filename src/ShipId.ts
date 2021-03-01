@@ -611,6 +611,7 @@ export const enum ShipId {
   "Scirocco改" = 658,
   "Washington改" = 659,
   "能代改二" = 662,
+  "曙改二" = 665,
   "日振改" = 678,
   "大東改" = 679,
   "浜波改" = 680,

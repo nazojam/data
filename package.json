@@ -1,6 +1,6 @@
 {
   "name": "@jervis/data",
-  "version": "0.14.6",
+  "version": "0.14.7",
   "repository": "https://github.com/kcjervis/data.git",
   "license": "UNLICENSED",
   "author": "madono (https://github.com/MadonoHaru)",
@@ -14,7 +14,7 @@
     "runmain": "yarn tsnode scripts/main.ts",
     "test": "jest",
     "tsnode": "yarn run ts-node --project tsconfig.node.json --files",
-    "update": "yarn update:submodule && yarn update:data && update:types",
+    "update": "yarn update:submodule && yarn update:data && yarn update:types",
     "update:data": "yarn tsnode scripts && prettier --write src/json",
     "update:maps": "yarn tsnode scripts/bin/updateMaps",
     "update:submodule": "git submodule update --remote",
