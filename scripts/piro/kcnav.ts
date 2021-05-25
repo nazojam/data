@@ -69,7 +69,7 @@ const isBattleNode = (event: NodeEvent) => {
 const client = Axios.create({ baseURL: "http://kc.piro.moe/api/routing", timeout: 1000 * 60 * 5 })
 
 const heatmapParams = {
-  start: "2020-12-01",
+  start: "2021-05-01",
 }
 
 const getHeatmaps = (mapKey: string) =>
