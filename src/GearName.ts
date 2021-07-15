@@ -417,6 +417,7 @@ export type GearName =
   | "SBD-5"
   | "SB2C-3"
   | "SB2C-5"
+  | "FR-1 Fireball"
   | "5inch単装砲"
   | "5inch連装砲"
   | "3inch単装高角砲"

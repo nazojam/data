@@ -417,6 +417,7 @@ export const enum GearId {
   "SBD-5" = 419,
   "SB2C-3" = 420,
   "SB2C-5" = 421,
+  "FR-1 Fireball" = 422,
   "5inch単装砲" = 501,
   "5inch連装砲" = 502,
   "3inch単装高角砲" = 503,
@@ -528,5 +529,5 @@ export const enum GearId {
   "深海16inch三連装砲 Mk6" = 609,
   "深海カモメ水偵" = 610,
   "深海海猫水偵" = 611,
-  "深海6inch三連装主砲 Mk.16" = 612
+  "深海6inch三連装主砲 Mk.16" = 612,
 }

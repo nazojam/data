@@ -651,6 +651,7 @@ export const enum ShipId {
   "Hornet改" = 704,
   "Sheffield改" = 705,
   "竹改" = 706,
+  "Gambier Bay Mk.II" = 707,
   "桃改" = 708,
   "巻波改" = 709,
   "涼波改" = 710,

@@ -320,6 +320,15 @@ export enum ShipClassId {
   /** Town級 */
   TownClass = 108,
 
+  /** 伊201級 */
+  I201Class = 109,
+
+  /** Brooklyn級 */
+  BrooklynClass = 110,
+
+  /** 宗谷 */
+  Souya = 111,
+
   /** 駆逐イ級 */
   DestroyerIClass = 1001,
   /** 駆逐ロ級 */
@@ -615,6 +624,9 @@ export enum ShipClassJp {
   "St.Louis級" = 106,
   "North Carolina級" = 107,
   "Town級" = 108,
+  "伊201級" = 109,
+  "Brooklyn級" = 110,
+  "宗谷" = 111,
 
   "駆逐イ級" = 1001,
   "駆逐ロ級" = 1002,

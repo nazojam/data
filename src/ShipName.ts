@@ -611,6 +611,7 @@ export type PlayerShipName =
   | "Intrepid改"
   | "Gambier Bay"
   | "Gambier Bay改"
+  | "Gambier Bay Mk.II"
   | "Hornet"
   | "Hornet改"
   | "Northampton"
