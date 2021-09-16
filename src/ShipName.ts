@@ -525,6 +525,8 @@ export type PlayerShipName =
   | "大東改"
   | "第四号海防艦"
   | "第四号海防艦改"
+  | "第三〇号海防艦"
+  | "第三〇号海防艦改"
   | "伊13"
   | "伊13改"
   | "伊14"
@@ -643,6 +645,8 @@ export type PlayerShipName =
   | "Nelson改"
   | "Ark Royal"
   | "Ark Royal改"
+  | "Victorious"
+  | "Victorious改"
   | "Sheffield"
   | "Sheffield改"
   | "Jervis"
@@ -839,5 +843,9 @@ export type AbyssalShipName =
   | "港湾夏姫II-壊"
   | "地中海弩級水姫"
   | "地中海弩級水姫-壊"
+  | "深海地中海棲姫 バカンスmode"
+  | "深海地中海棲姫 バカンスmode-壊"
+  | "欧州装甲空母棲姫"
+  | "欧州装甲空母棲姫-壊"
 
 export type ShipName = PlayerShipName | AbyssalShipName
