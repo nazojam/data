@@ -19039,7 +19039,7 @@
     "speed": 5,
     "los": 70,
     "luck": 30,
-    "slotCapacities": [0, 0, 50, 531],
+    "slotCapacities": [0, 0, 50, 0],
     "equipments": [509, 505, 520, 531],
     "range": 3
   },
